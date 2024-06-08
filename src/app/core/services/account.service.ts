@@ -35,7 +35,6 @@ export class AccountService {
     return this.httpclient.post<any>(`${this.baseUrl}/Account/ChangePassword`,data);
   }
 
-
   get token():string|null {  
     return localStorage.getItem('token');
   }

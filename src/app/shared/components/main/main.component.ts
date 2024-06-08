@@ -13,6 +13,7 @@ export class MainComponent {
 
   }
   navigateToLogin(userType: string): void {
+    localStorage.setItem('userType', userType);
     this.router.navigate(['/login'], { queryParams: { type: userType } });
   }
 }

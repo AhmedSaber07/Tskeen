@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit{
     this.accountService.logout();
     this.route.queryParams.subscribe(params => {
       this.userType = params['type'];
+      if(this.userType ===undefined )
+        {
+          this.userType = localStorage.getItem('userType') ?? '';
+        }
       console.log(this.userType); // Will log 'owner' or 'student'
     });
   }
