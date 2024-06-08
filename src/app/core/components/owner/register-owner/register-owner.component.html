@@ -1,0 +1,131 @@
+    <div class="container-apartment">
+        <div class="header-apartment">
+            
+            <h1>إنشاء حساب جديد </h1>
+            <img src="../../../../../assets/imgs/logo.png" alt="شعار المباني" class="logo">
+        </div>
+        <form  [formGroup]="ownerForm" (ngSubmit)="onSubmit()" class="form">
+            <table>
+                <tr>
+                    
+
+                    <td><label for="firstName">الاسم الاول:</label></td>
+                    <td><input type="text" formControlName="firstName" placeholder="ادخل اسم الاول الخاص بك"
+                        [ngClass]="{'is-invalid':(firstName?.touched || firstName?.dirty)&& firstName?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(firstName?.errors?.['required'])
+                           { <span>الاسم الاول مطلوب</span>}
+            
+                           @else if(firstName?.errors?.['minlength']) 
+                           { <span>الحد الأدنى للاسم الاول هو 3</span>}
+                         </span>
+                    </td>
+
+                    <td><label for="lastName">اسم العائلة:</label></td>
+                    <td><input type="text" formControlName="lastName" placeholder="ادخل اسم العائلة الخاص بك"
+                        [ngClass]="{'is-invalid':(lastName?.touched || lastName?.dirty)&& lastName?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(lastName?.errors?.['required'])
+                           { <span>اسم العائلة مطلوب</span>}
+            
+                           @else if(lastName?.errors?.['minlength']) 
+                           { <span>الحد الأدنى لاسم العائلة هو 3</span>}
+                         </span>
+                    </td>
+
+
+                </tr>
+                
+
+                <tr>
+                    <td><label for="phoneNumber" class="boxss">رقم الهاتف:</label></td>
+                    <td><input type="tel" formControlName="phone" placeholder=" ادخل رقم الهاتف الخاص بك"
+                        [ngClass]="{'is-invalid':(phone?.touched || phone?.dirty)&& phone?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(phone?.errors?.['required'])
+                           {
+                             <span>رقم الهاتف مطلوب</span>
+                           }
+                           @else if(phone?.errors?.['pattern']) 
+                           {
+                             <span>رقم الهاتف غر صالح</span>
+                           }
+                         </span>
+                    </td>
+                   
+                </tr>
+
+
+                <tr>
+
+                    <td><label for="email" class="boxss">البريد الالكتروني:</label></td>
+                    <td><input type="email" formControlName="email" placeholder="user@example.com"
+                        [ngClass]="{'is-invalid':(email?.touched || email?.dirty)&& email?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(email?.errors?.['required'])
+                           { <span>البريد الالكتروني مطلوب</span>}
+                           
+                           @else if(email?.errors?.['pattern']) 
+                           { <span>البريد الالكتروني غير صالح</span> }
+                         </span>
+                    </td>
+                   
+                </tr>
+
+                
+
+
+                <tr>
+
+                    
+
+                    <td><label for="password" class="boxss">كلمة  السر :</label></td>
+                    <td><input type="password" formControlName="password" placeholder="  ادخل كلمة سر اكثر من 6 حروف"
+                        [ngClass]="{'is-invalid':(password?.touched || password?.dirty)&& password?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(password?.errors?.['required'])
+                           { <span>كلمة السر مطلوب</span>  }
+            
+                           @else if(password?.errors?.['minlength']) 
+                           { <span>الحد الادني لكلمة السر 6 </span> }
+            
+                           @else if(password?.errors?.['pattern']) 
+                           { <span>كلمة السر ضعيفه</span> }
+                         </span>
+                    </td>
+                   
+
+                   
+
+                </tr>
+                <tr>
+
+
+                    
+
+                <td><label for="confirmPassword" class="boxss">تاكيد كلمة السر :</label></td>
+                <td><input type="password" formControlName="confirmPassword" placeholder=" تاكيد كلمة السر "
+                    [ngClass]="{'is-invalid':(confirmPassword?.touched || confirmPassword?.dirty)&& confirmPassword?.invalid}">
+                    <span class="invalid-feedback">
+                       @if(confirmPassword?.errors?.['required'])
+                       { <span>تاكيد كلمة السر مطلوب</span>}
+        
+                       @else if(confirmPassword?.errors?.['mismatch']) 
+                       { <span>تأكيد كلمة السر وكلمة السر غير متطابقة</span> }
+                     </span>
+                </td>
+               
+
+                </tr>
+
+
+                
+
+               
+            </table>
+            <div class="form-buttons">
+                <button type="submit" class="save-button">انشاء الحساب</button>
+                <button [routerLink]="['/login']" routerLinkActive="router-link-active" type="button"  class="cancel-button">إلغاء</button>
+            </div>
+        </form>
+    </div>

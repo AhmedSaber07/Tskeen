@@ -1,0 +1,112 @@
+<body>
+    <div class="container-apartment">
+        <div class="header-apartment">
+            
+            <h1>تعديل البيانات الشخصية   </h1>
+            <img src="../../../../../assets/imgs/logo.png" alt="شعار المباني" class="logo">
+        </div>
+        @if(ownerForm)
+        {
+        <form  [formGroup]="ownerForm" (ngSubmit)="onSubmit()"  class="form">
+            <table>
+                <tr>
+                    
+
+                    <td><label for="firstName">الاسم الاول:</label></td>
+                    <td><input type="text" formControlName="firstName" placeholder="ادخل اسم الاول الخاص بك"
+                        [ngClass]="{'is-invalid':(firstName?.touched || firstName?.dirty)&& firstName?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(firstName?.errors?.['required'])
+                           { <span>الاسم الاول مطلوب</span>}
+            
+                           @else if(firstName?.errors?.['minlength']) 
+                           { <span>الحد الأدنى للاسم الاول هو 3</span>}
+                         </span>
+                    </td>
+
+                    <td><label for="lastName">اسم العائلة:</label></td>
+                    <td><input type="text" formControlName="lastName" placeholder="ادخل اسم العائلة الخاص بك"
+                        [ngClass]="{'is-invalid':(lastName?.touched || lastName?.dirty)&& lastName?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(lastName?.errors?.['required'])
+                           { <span>اسم العائلة مطلوب</span>}
+            
+                           @else if(lastName?.errors?.['minlength']) 
+                           { <span>الحد الأدنى لاسم العائلة هو 3</span>}
+                         </span>
+                    </td>
+
+                </tr>
+                
+
+                <tr>
+                    <td><label for="phoneNumber" class="boxss">رقم الهاتف:</label></td>
+                    <td><input type="tel" formControlName="phone" placeholder=" ادخل رقم الهاتف الخاص بك"
+                        [ngClass]="{'is-invalid':(phone?.touched || phone?.dirty)&& phone?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(phone?.errors?.['required'])
+                           {
+                             <span>رقم الهاتف مطلوب</span>
+                           }
+                           @else if(phone?.errors?.['pattern']) 
+                           {
+                             <span>رقم الهاتف غر صالح</span>
+                           }
+                         </span>
+                    </td>                   
+                </tr>
+
+
+                <tr>
+
+                    <td><label for="email" class="boxss">البريد الالكتروني:</label></td>
+                    <td><input readonly type="email" formControlName="email" placeholder="user@example.com"
+                        [ngClass]="{'is-invalid':(email?.touched || email?.dirty)&& email?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(email?.errors?.['required'])
+                           { <span>البريد الالكتروني مطلوب</span>}
+                           
+                           @else if(email?.errors?.['pattern']) 
+                           { <span>البريد الالكتروني غير صالح</span> }
+                         </span>
+                    </td>                   
+                </tr>
+
+                
+
+
+                <!-- <tr>
+
+                    
+
+                    <td><label for="password" class="boxss">كلمة  السر :</label></td>
+                    <td><input type="password" id="password" name="password" placeholder="رجاءا ادخل كلمة سر قوية"></td>
+                   
+
+                   
+
+                </tr>
+               <tr>
+
+
+                    
+
+                <td><label for="confirmPassword" class="boxss">تاكيد كلمة السر :</label></td>
+                <td><input type="password" id="confirmPassword" name="confirmPassword" placeholder=" تاكيد كلمة السر "></td>
+               
+
+                </tr> -->
+
+
+                
+
+               
+            </table>
+            <div class="form-buttons">
+                <button type="submit" class="save-button"> حفظ</button>
+                <button type="button" class="cancel-button" [routerLink]="['/home-owner']" routerLinkActive="router-link-active" >إلغاء</button>
+            </div>
+        </form>
+    }
+    </div>
+</body>

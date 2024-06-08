@@ -1,0 +1,136 @@
+<div class="container-apartment">
+    <div class="header-apartment">
+        
+        <h1>إضافة مبني </h1>
+        <img src="../../../../../../assets/imgs/logo.png" alt="شعار المباني" class="logo">
+    </div>
+    <form [formGroup]="addBuildingForm" (ngSubmit)="onSubmit()" class="form" enctype="multipart/form-data">
+        <table>
+            <tr>
+                
+
+                <td><label for="Name">اسم المبني:</label></td>
+                <td><input type="text" formControlName="buildingName" placeholder="ادخل اسم المبني الخاص بك"
+                    [ngClass]="{'is-invalid':(buildingName?.touched || buildingName?.dirty)&& buildingName?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(buildingName?.errors?.['required'])
+                           { <span>اسم المبني مطلوب</span>}
+            
+                           @else if(buildingName?.errors?.['minlength']) 
+                           { <span>الحد الأدنى لاسم المبني هو 6</span>}
+                         </span>
+                    </td>
+
+                
+
+
+            </tr>
+
+            <tr><td><label for="Address "> عنوان المبني :</label></td>
+                <td><input type="text" formControlName="buildingAddress" placeholder="ادخل عنوان المبني الخاص بك"
+                    [ngClass]="{'is-invalid':(buildingAddress?.touched || buildingAddress?.dirty)&& buildingAddress?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(buildingAddress?.errors?.['required'])
+                           { <span>عنوان المبني مطلوب</span>}
+            
+                           @else if(buildingAddress?.errors?.['minlength']) 
+                           { <span>الحد الأدنى لعنوان المبني هو 10</span>}
+                         </span>
+                    </td>
+            
+            </tr>
+            <tr>
+            <td><label for="description">وصف المبني:</label></td>
+            <td><input type="text" formControlName="buildingDescription" placeholder="ادخل وصف المبني الخاص بك"
+                [ngClass]="{'is-invalid':(buildingDescription?.touched || buildingDescription?.dirty)&& buildingDescription?.invalid}">
+                    <span class="invalid-feedback">
+                       @if(buildingDescription?.errors?.['required'])
+                       { <span>وصف المبني مطلوب</span>}
+        
+                       @else if(buildingDescription?.errors?.['minlength']) 
+                       { <span>الحد الأدنى لوصف المبني هو 15</span>}
+                     </span>
+                </td>
+
+
+
+                
+            </tr>
+
+            <tr>
+
+                <tr>
+                    <td>المبني  خاص ب :</td>
+                    <td>
+                        <input type="radio" id="UserGender-m" formControlName="UserGender" value="0">
+                        <label for="UserGender-yes">اولاد</label>
+                        <input type="radio" formControlName="UserGender" value="1">
+                        <label for="UserGender-no">بنات</label>
+                            @if(UserGender?.touched && UserGender?.invalid)
+                            {
+                            <div class="text-danger" style="font-size: .875em;">
+                                @if(UserGender?.errors?.['required'])
+                                { <span>يجب اختيار النوع</span>}
+                              </div>
+                            }
+                    </td>
+
+                
+
+               
+
+            </tr>
+           <tr>
+
+
+                
+
+                <td>هل يوجد غاز طبيعي:</td>
+                <td>
+                    <input type="radio" formControlName="Gas" value="true">
+                    <label for="Gas -yes">نعم</label>
+                    <input type="radio" formControlName="Gas" value="false">
+                    <label for="Gas -no">لا</label>
+                    @if(Gas?.touched && Gas?.invalid)
+                    {
+                    <div class="text-danger" style="font-size: .875em;">
+                        @if(Gas?.errors?.['required'])
+                        { <span>يجب اختيار ما اذا كان يحتوي علي غاز ام لا</span>}
+                      </div>
+                    }
+                </td>
+
+               
+            </tr>
+
+
+            
+
+            <tr>
+            
+                <td><label for="ImageFile">صورة المبني:</label></td>
+                <td><input type="file" (change)="uploadFile($event)" formControlName="imageFile" placeholder="ادخل صورة المبني الخاص بك"
+                    accept="image/png, image/gif, image/jpeg" 
+                    [ngClass]="{'is-invalid':(imageFile?.touched || imageFile?.dirty)&& imageFile?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(imageFile?.errors?.['required'])
+                           { <span>صورة المبني مطلوبة</span>}
+                         </span>
+                         <div class="text-danger" style="font-size: .875em;">
+                            @if(flagErrorInFile)
+                            { <span>{{errorMessageInFile}}</span>}
+                           </div>
+                </td>
+
+
+               
+            </tr>
+        </table>
+        <div class="form-buttons">
+            <button type="submit" class="save-button">حفظ</button>
+            <button type="button" class="cancel-button" [routerLink]="['/home-owner/homeBuilding-owner']" routerLinkActive="router-link-active" >إلغاء</button>
+        </div>
+        <!-- {{addBuildingForm.value|json}}
+        {{addBuildingForm.valid}} -->
+    </form>
+</div>

@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container-apartment {
+    width: 90%;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.header-apartment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #008cba;
+    padding-bottom: 10px;
+
+}
+
+ .logo {
+    width: 100px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+
+}
+.form {
+    margin-top: 50px;
+
+}
+
+.form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+
+   
+
+}
+
+.form td {
+    padding: 10px;
+    vertical-align: middle;
+    
+}
+
+.form label {
+    font-weight: bold;
+}
+
+.form input[type="text"],
+.form input[type="tel"],
+.form input[type="email"],
+.form input[type="password"],
+.form select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.form input[type="radio"] {
+    margin-right: 5px;
+}
+
+.form .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 150px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 3%;
+
+}
+
+.save-button {
+    background-color: #008cba;
+    color: white;
+   
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+}
+
+input:focus{
+    background-color: #9bf4ee;
+    
+}
+select:focus{
+    background-color: #9bf4ee;
+    
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form table, 
+    .form tr, 
+    .form td {
+        display: block;
+        width: 100%;
+    }
+    
+    .form td {
+        padding: 10px 0;
+    }
+    
+    .form td label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .form-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .form-buttons button {
+        width: 70%;
+        margin-bottom: 10px;
+    }
+
+}
