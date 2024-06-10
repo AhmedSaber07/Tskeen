@@ -11,7 +11,7 @@ import { Changepassword } from '../../shared/models/changepassword';
   providedIn: 'root'
 })
 export class AccountService {
-  private baseUrl = 'http://sakanapi.runasp.net/api'
+  private baseUrl = 'https://sakanapi.runasp.net/api'
   constructor(private httpclient :HttpClient) { }
 
   OwnerRegister(ownerData: RegisterOwner): Observable<any> { 
