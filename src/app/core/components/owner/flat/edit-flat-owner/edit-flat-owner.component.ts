@@ -41,7 +41,7 @@ export class EditFlatOwnerComponent implements OnInit {
 
     this.flatService.getById(this.flatId).subscribe((data) => {
       this.getFlat = data.data;
-      console.log(this.getFlat);
+     // console.log(this.getFlat);
       this.initForm();
     });
 this.onWasherChange();
@@ -66,23 +66,23 @@ this.onHeaterChange();
   onWasherChange(): void {
     if (this.ThereIsWasher?.value === false) {
       this.WasherType?.setValue('none');
-      console.log('Washer');
+     // console.log('Washer');
       
     }
     else{
       this.WasherType?.setValue('');
-      console.log('No Washer');
+      //console.log('No Washer');
     }
   }
 
   onHeaterChange(): void {
     if (this.ThereIsHeater?.value === false) {
       this.HeaterType?.setValue('none');
-      console.log('Heater');
+      //console.log('Heater');
     }
     else{
       this.HeaterType?.setValue('');
-      console.log('No Heater');
+    //  console.log('No Heater');
     }
   }
 
@@ -110,9 +110,9 @@ this.onHeaterChange();
       this.errorMessageInFile = '';
       this.imgFiles[index] = file;
       this.FlatImagesFile.at(index).get('FlatImageFile')?.setValue(file.name);
-      console.log(this.FlatImagesFile.at(index).get('FlatImageFile'));
+      //console.log(this.FlatImagesFile.at(index).get('FlatImageFile'));
       
-      console.log(this.imgFiles);
+    //  console.log(this.imgFiles);
     } else {
       this.flagErrorInFile = true;
       if (!validTypes.includes(file.type)) {
@@ -120,12 +120,12 @@ this.onHeaterChange();
       } else if (file.size >= 10000000) {
         this.errorMessageInFile = "يرجى تحميل صورة أقل من 10 ميغابايت";
       }
-      console.log(this.errorMessageInFile);
+     // console.log(this.errorMessageInFile);
     }
   }
 
   onSubmit(){
-console.log(this.flagErrorInFile);
+//console.log(this.flagErrorInFile);
 
     if(this.editFlatForm.valid&&!this.flagErrorInFile){
       // if(this.accountService.id)
@@ -150,7 +150,7 @@ console.log(this.flagErrorInFile);
           
       this.flatService.update(this.flatId,formData).subscribe(
         (data)=> {
-            console.log(data);
+           // console.log(data);
             Swal.fire({
               title: "صحيح",
               text: `${data.message}`,
@@ -160,7 +160,7 @@ console.log(this.flagErrorInFile);
             this.router.navigate(['/home-owner/homeFlat-owner']);
         },
         (err)=>{
-          console.log(err);
+         // console.log(err);
           
         }
       )
@@ -172,8 +172,8 @@ console.log(this.flagErrorInFile);
         {
           this.flagErrorInFile=true;
           this.errorMessageInFile="يرجى تحميل صورة واحده علي الاقل";
-          console.log(this.flagErrorInFile);
-          console.log(this.errorMessageInFile);
+          //console.log(this.flagErrorInFile);
+         // console.log(this.errorMessageInFile);
         }
     }
   }

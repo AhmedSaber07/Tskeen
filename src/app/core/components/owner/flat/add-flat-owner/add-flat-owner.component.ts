@@ -62,23 +62,23 @@ export class AddFlatOwnerComponent {
   onWasherChange(): void {
     if (this.ThereIsWasher?.value === 'false') {
       this.WasherType?.setValue('none');
-      console.log('Washer');
+     // console.log('Washer');
       
     }
     else{
       this.WasherType?.setValue('');
-      console.log('No Washer');
+    //  console.log('No Washer');
     }
   }
 
   onHeaterChange(): void {
     if (this.ThereIsHeater?.value === 'false') {
       this.HeaterType?.setValue('none');
-      console.log('Heater');
+     // console.log('Heater');
     }
     else{
       this.HeaterType?.setValue('');
-      console.log('No Heater');
+   //   console.log('No Heater');
     }
   }
 
@@ -106,9 +106,9 @@ export class AddFlatOwnerComponent {
       this.errorMessageInFile = '';
       this.imgFiles[index] = file;
       this.FlatImagesFile.at(index).get('FlatImageFile')?.setValue(file.name);
-      console.log(this.FlatImagesFile.at(index).get('FlatImageFile'));
+      //console.log(this.FlatImagesFile.at(index).get('FlatImageFile'));
       
-      console.log(this.imgFiles);
+     // console.log(this.imgFiles);
     } else {
       this.flagErrorInFile = true;
       if (!validTypes.includes(file.type)) {
@@ -116,13 +116,13 @@ export class AddFlatOwnerComponent {
       } else if (file.size >= 10000000) {
         this.errorMessageInFile = "يرجى تحميل صورة أقل من 10 ميغابايت";
       }
-      console.log(this.errorMessageInFile);
+     // console.log(this.errorMessageInFile);
     }
   }
 
   onSubmit(){
     if(this.addFlatForm.valid&&!this.flagErrorInFile){
-      console.log(this.buildingId?.toString());
+    //  console.log(this.buildingId?.toString());
 
           const formData = new FormData();
           formData.append('Discreption',this.addFlatForm.value.flatDescription);
@@ -143,7 +143,7 @@ export class AddFlatOwnerComponent {
           
       this.flatService.add(formData).subscribe(
         (data)=> {
-            console.log(data);
+           // console.log(data);
             Swal.fire({
               title: "صحيح",
               text: `${data.message}`,

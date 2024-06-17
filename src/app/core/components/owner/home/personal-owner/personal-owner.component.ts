@@ -23,7 +23,7 @@ export class PersonalOwnerComponent implements OnInit  {
     this.accountService.getOwnerProfile(this.accountService.id).subscribe(
       (data)=>{
           this.ownerProfile = data.data;
-          console.log(this.ownerProfile);
+          //console.log(this.ownerProfile);
           
           // this.firstName = this.ownerProfile.fullName.split(' ')[0];
           // this.lastName = this.ownerProfile.fullName.split(' ')[1];

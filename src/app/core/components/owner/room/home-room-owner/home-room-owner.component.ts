@@ -20,10 +20,10 @@ flatId!:number;
     this.flatId = this.flatService.flatId;
     this.roomService.getAll(this.flatId).subscribe((data)=>{
       this.rooms = data.data;
-      console.log(this.rooms);
+    //  console.log(this.rooms);
       
     })
-    console.log(this.rooms);
+   // console.log(this.rooms);
   }
   navigateToAddRoom(){
     this.router.navigate(['/addRoom-owner'], { queryParams: { flatId: this.flatId } });
@@ -47,7 +47,7 @@ flatId!:number;
     }).then((result) => {
       if (result.isConfirmed) {
         this.roomService.delete(id).subscribe((data)=>{
-          console.log(data);
+        //  console.log(data);
         Swal.fire({
           title: "Deleted!",
           text: `${data.message}`,

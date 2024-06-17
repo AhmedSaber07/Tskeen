@@ -29,10 +29,10 @@ export class EditBuildingOwnerComponent implements OnInit {
       this.buildId = Number(params.get('id'));
     });
 
-    console.log('Building ID:', this.buildId);
+   // console.log('Building ID:', this.buildId);
     this.buildingService.getById(this.buildId).subscribe((data) => {
       this.getBuilding = data.data;
-      console.log(this.getBuilding);
+    //  console.log(this.getBuilding);
       this.initForm();
     });
   }
@@ -61,11 +61,11 @@ export class EditBuildingOwnerComponent implements OnInit {
     if (validTypes.includes(file.type) && file.size < 1000000) {
       this.flagErrorInFile = false;
       this.imgFile = file;
-      console.log(this.imgFile);
+    //  console.log(this.imgFile);
     } else {
       this.flagErrorInFile = true;
       this.errorMessageInFile = !validTypes.includes(file.type) ? ".jpg او .png او .gif الرجاء تحميل نوع صورة يحمل اي من هذا الامتداد" : "يرجى تحميل صورةأقل من 1 ميغابايت";
-      console.log(this.errorMessageInFile);
+      //console.log(this.errorMessageInFile);
     }
   }
 
@@ -80,12 +80,12 @@ export class EditBuildingOwnerComponent implements OnInit {
         formData.append('Gas', this.editBuildingForm.value.Gas);
         formData.append('OwnerId', this.accountService.id);
         formData.append('ImageFile', this.imgFile);
-        console.log(formData);
+       // console.log(formData);
 
         this.buildingService.update(this.buildId,formData).subscribe(
           (data) => {
             if (data) {
-              console.log(data);
+           //   console.log(data);
               Swal.fire({
                 title: "صحيح",
                 text: `${data.message}`,

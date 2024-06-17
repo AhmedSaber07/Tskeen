@@ -31,8 +31,8 @@ export class EditRoomOwnerComponent implements OnInit{
 
     this.roomService.getById(this.roomId).subscribe((data) => {
       this.getRoom = data.data;
-      console.log(this.getRoom);
-      console.log(this.getRoom.description);
+     // console.log(this.getRoom);
+      //console.log(this.getRoom.description);
       this.initForm();
     });
 
@@ -91,9 +91,9 @@ export class EditRoomOwnerComponent implements OnInit{
       this.errorMessageInFile = '';
       this.imgFiles[index] = file;
       this.RoomImagesFiles.at(index).get('RoomImageFile')?.setValue(file.name);
-      console.log(this.RoomImagesFiles.at(index).get('RoomImageFile'));
+    //  console.log(this.RoomImagesFiles.at(index).get('RoomImageFile'));
       
-      console.log(this.imgFiles);
+    //  console.log(this.imgFiles);
     } else {
       this.flagErrorInFile = true;
       if (!validTypes.includes(file.type)) {
@@ -101,7 +101,7 @@ export class EditRoomOwnerComponent implements OnInit{
       } else if (file.size >= 10000000) {
         this.errorMessageInFile = "يرجى تحميل صورة أقل من 10 ميغابايت";
       }
-      console.log(this.errorMessageInFile);
+      //console.log(this.errorMessageInFile);
     }
   }
 
@@ -122,29 +122,29 @@ export class EditRoomOwnerComponent implements OnInit{
           formData.append('DayPrice',this.editRoomForm.value.DayPrice);
           formData.append('FlatId',this.flatService.flatId?.toString());
 
-          console.log('Description',this.editRoomForm.value.Description);
-          console.log('AirCondition',this.editRoomForm.value.AirCondition);
-          console.log('NumberOfBeds',this.editRoomForm.value.NumberOfBeds);
-          console.log('NumberOfDisks',this.editRoomForm.value.NumberOfDisks);
-          console.log('NumberOfChairs',this.editRoomForm.value.NumberOfChairs);
-          console.log('NumberOfCupboards',this.editRoomForm.value.NumberOfCupboards);
-          console.log('WindowType',this.editRoomForm.value.WindowType);
-          console.log('ServicesPrice',this.editRoomForm.value.ServicesPrice);
-          console.log('InsurancePrice',this.editRoomForm.value.InsurancePrice);
-          console.log('MonthPrice',this.editRoomForm.value.MonthPrice);
-          console.log('DayPrice',this.editRoomForm.value.DayPrice);
-          console.log('FlatId',this.flatService.flatId?.toString());
+          // console.log('Description',this.editRoomForm.value.Description);
+          // console.log('AirCondition',this.editRoomForm.value.AirCondition);
+          // console.log('NumberOfBeds',this.editRoomForm.value.NumberOfBeds);
+          // console.log('NumberOfDisks',this.editRoomForm.value.NumberOfDisks);
+          // console.log('NumberOfChairs',this.editRoomForm.value.NumberOfChairs);
+          // console.log('NumberOfCupboards',this.editRoomForm.value.NumberOfCupboards);
+          // console.log('WindowType',this.editRoomForm.value.WindowType);
+          // console.log('ServicesPrice',this.editRoomForm.value.ServicesPrice);
+          // console.log('InsurancePrice',this.editRoomForm.value.InsurancePrice);
+          // console.log('MonthPrice',this.editRoomForm.value.MonthPrice);
+          // console.log('DayPrice',this.editRoomForm.value.DayPrice);
+          // console.log('FlatId',this.flatService.flatId?.toString());
           
          
           this.imgFiles.forEach((file, index) => {
             formData.append(`RoomImagesFiles`, file);
-            console.log(file);
+            //console.log(file);
             
           });
           
       this.roomService.update(this.roomId,formData).subscribe(
         (data)=> {
-            console.log(data);
+         //   console.log(data);
             Swal.fire({
               title: "صحيح",
               text: `${data.message}`,
@@ -154,7 +154,7 @@ export class EditRoomOwnerComponent implements OnInit{
             this.router.navigate(['/home-owner/homeRoom-owner']);
         },
         (err)=>{
-          console.log(err);
+       //   console.log(err);
           Swal.fire({
             text: `${err.error.message}`,
             icon: "warning"
@@ -171,8 +171,8 @@ export class EditRoomOwnerComponent implements OnInit{
         {
           this.flagErrorInFile=true;
           this.errorMessageInFile="يرجى تحميل صورة واحده علي الاقل";
-          console.log(this.flagErrorInFile);
-          console.log(this.errorMessageInFile);
+        //  console.log(this.flagErrorInFile);
+       //   console.log(this.errorMessageInFile);
         }
     }
   }

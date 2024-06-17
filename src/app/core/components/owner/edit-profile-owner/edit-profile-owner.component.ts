@@ -28,7 +28,7 @@ export class EditProfileOwnerComponent  {
     this.accountService.getOwnerProfile(this.accountService.id).subscribe(
       (data)=>{
           this.ownerProfile = data.data;
-          console.log(this.ownerProfile);
+         // console.log(this.ownerProfile);
           
           this._firstName = this.ownerProfile.fullName.split(' ')[0];
           this._lastName = this.ownerProfile.fullName.split(' ')[1];
@@ -80,7 +80,7 @@ onSubmit(){
         }
     },
     (err)=>{
-      console.log(err);
+      //console.log(err);
       Swal.fire({
         icon: "error",
         title: "خطأ",

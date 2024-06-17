@@ -75,9 +75,9 @@ export class AddRoomOwnerComponent implements OnInit  {
       this.errorMessageInFile = '';
       this.imgFiles[index] = file;
       this.RoomImagesFiles.at(index).get('RoomImageFile')?.setValue(file.name);
-      console.log(this.RoomImagesFiles.at(index).get('RoomImageFile'));
+     // console.log(this.RoomImagesFiles.at(index).get('RoomImageFile'));
       
-      console.log(this.imgFiles);
+      //console.log(this.imgFiles);
     } else {
       this.flagErrorInFile = true;
       if (!validTypes.includes(file.type)) {
@@ -85,7 +85,7 @@ export class AddRoomOwnerComponent implements OnInit  {
       } else if (file.size >= 10000000) {
         this.errorMessageInFile = "يرجى تحميل صورة أقل من 10 ميغابايت";
       }
-      console.log(this.errorMessageInFile);
+     // console.log(this.errorMessageInFile);
     }
   }
 
@@ -106,29 +106,29 @@ export class AddRoomOwnerComponent implements OnInit  {
           formData.append('DayPrice',this.addRoomForm.value.DayPrice);
           formData.append('FlatId',this.flatService.flatId?.toString());
 
-          console.log('Description',this.addRoomForm.value.Description);
-          console.log('AirCondition',this.addRoomForm.value.AirCondition);
-          console.log('NumberOfBeds',this.addRoomForm.value.NumberOfBeds);
-          console.log('NumberOfDisks',this.addRoomForm.value.NumberOfDisks);
-          console.log('NumberOfChairs',this.addRoomForm.value.NumberOfChairs);
-          console.log('NumberOfCupboards',this.addRoomForm.value.NumberOfCupboards);
-          console.log('WindowType',this.addRoomForm.value.WindowType);
-          console.log('ServicesPrice',this.addRoomForm.value.ServicesPrice);
-          console.log('InsurancePrice',this.addRoomForm.value.InsurancePrice);
-          console.log('MonthPrice',this.addRoomForm.value.MonthPrice);
-          console.log('DayPrice',this.addRoomForm.value.DayPrice);
-          console.log('FlatId',this.flatService.flatId?.toString());
+          // console.log('Description',this.addRoomForm.value.Description);
+          // console.log('AirCondition',this.addRoomForm.value.AirCondition);
+          // console.log('NumberOfBeds',this.addRoomForm.value.NumberOfBeds);
+          // console.log('NumberOfDisks',this.addRoomForm.value.NumberOfDisks);
+          // console.log('NumberOfChairs',this.addRoomForm.value.NumberOfChairs);
+          // console.log('NumberOfCupboards',this.addRoomForm.value.NumberOfCupboards);
+          // console.log('WindowType',this.addRoomForm.value.WindowType);
+          // console.log('ServicesPrice',this.addRoomForm.value.ServicesPrice);
+          // console.log('InsurancePrice',this.addRoomForm.value.InsurancePrice);
+          // console.log('MonthPrice',this.addRoomForm.value.MonthPrice);
+          // console.log('DayPrice',this.addRoomForm.value.DayPrice);
+          // console.log('FlatId',this.flatService.flatId?.toString());
           
          
           this.imgFiles.forEach((file, index) => {
             formData.append(`RoomImagesFiles`, file);
-            console.log(file);
+            // console.log(file);
             
           });
           
       this.roomService.add(formData).subscribe(
         (data)=> {
-            console.log(data);
+           // console.log(data);
             Swal.fire({
               title: "صحيح",
               text: `${data.message}`,
@@ -138,7 +138,7 @@ export class AddRoomOwnerComponent implements OnInit  {
             this.router.navigate(['/home-owner/homeRoom-owner']);
         },
         (err)=>{
-          console.log(err);
+        //  console.log(err);
           Swal.fire({
             text: `${err.error.message}`,
             icon: "warning"
@@ -151,6 +151,13 @@ export class AddRoomOwnerComponent implements OnInit  {
     }
     else{
       this.addRoomForm.markAllAsTouched();
+      if(this.imgFiles.length<=0)
+        {
+          this.flagErrorInFile=true;
+          this.errorMessageInFile="يرجى تحميل صورة واحده علي الاقل";
+          // console.log(this.flagErrorInFile);
+          // console.log(this.errorMessageInFile);
+        }
     }
   }
 

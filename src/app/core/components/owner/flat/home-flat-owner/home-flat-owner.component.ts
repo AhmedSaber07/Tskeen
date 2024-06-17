@@ -19,10 +19,10 @@ ngOnInit(): void {
   this.buildingId = this.buildingService.buildId;
   this.flatService.getAll(this.buildingId).subscribe((data)=>{
     this.flats = data.data;
-    console.log(this.flats);
+   // console.log(this.flats);
     
   })
-  console.log(this.buildingId);
+ // console.log(this.buildingId);
 }
 
 navigateToAddFlat(){
@@ -51,7 +51,7 @@ deleteFlat(id:number){
   }).then((result) => {
     if (result.isConfirmed) {
       this.flatService.delete(id).subscribe((data)=>{
-        console.log(data);
+        //console.log(data);
       Swal.fire({
         title: "Deleted!",
         text: `${data.message}`,

@@ -68,13 +68,13 @@ export class RegisterOwnerComponent implements OnInit {
         confirmPassword:this.ownerForm.value.confirmPassword,
         phoneNumber:this.ownerForm.value.phone
       }
-      console.log(this.ownerRegister);
+    //  console.log(this.ownerRegister);
       
       this.accountService.OwnerRegister(this.ownerRegister).subscribe(
         (data)=> {
           if(data){
             
-            console.log(data);
+        //    console.log(data);
             
             Swal.fire({
               title: "صحيح",
@@ -87,7 +87,7 @@ export class RegisterOwnerComponent implements OnInit {
           }
       },
       (err)=>{
-        console.log(err);
+      //  console.log(err);
         Swal.fire({
           icon: "error",
           title: "خطأ",

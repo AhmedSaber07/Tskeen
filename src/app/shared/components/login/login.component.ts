@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit{
         {
           this.userType = localStorage.getItem('userType') ?? '';
         }
-      console.log(this.userType); // Will log 'owner' or 'student'
+      //console.log(this.userType); // Will log 'owner' or 'student'
     });
   }
 
@@ -67,9 +67,9 @@ export class LoginComponent implements OnInit{
             this.accountService.id=this.response.id;
             this.accountService.token = this.response.token;
             this.accountService.role = this.response.role;
-            console.log(this.accountService.role);
-            console.log(this.accountService.token);
-            console.log(this.accountService.id);
+          //  console.log(this.accountService.role);
+           // console.log(this.accountService.token);
+         //   console.log(this.accountService.id);
             this.router.navigate(['/home-owner']);
           }
           else {
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit{
           }
       },
       (err)=>{
-        console.log(err);
+      //  console.log(err);
         Swal.fire({
           icon: "error",
           title: "خطأ",

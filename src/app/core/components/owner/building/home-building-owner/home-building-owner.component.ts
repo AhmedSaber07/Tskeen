@@ -22,7 +22,7 @@ export class HomeBuildingOwnerComponent implements OnInit {
       {
     this.buildingService.getAll(this.accountService.id).subscribe((data)=>{
       this.buildings = data.data;
-      console.log(this.buildings);
+     // console.log(this.buildings);
     })
       }
   }
@@ -50,7 +50,7 @@ export class HomeBuildingOwnerComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.buildingService.delete(id).subscribe((data)=>{
-          console.log(data);
+       //   console.log(data);
         Swal.fire({
           title: "Deleted!",
           text: `${data.message}`,

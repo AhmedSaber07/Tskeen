@@ -50,7 +50,7 @@ constructor(private router:Router,private buildingService:BuildingService,privat
       {
         this.flagErrorInFile=false;
        this.imgFile = file;
-       console.log(this.imgFile);
+      // console.log(this.imgFile);
        
       }
       else{
@@ -58,13 +58,13 @@ constructor(private router:Router,private buildingService:BuildingService,privat
           {
             this.flagErrorInFile=true;
             this.errorMessageInFile=".jpg او .png او .gif الرجاء تحميل نوع صورة يحمل اي من هذا الامتداد";
-            console.log(this.errorMessageInFile);
+           // console.log(this.errorMessageInFile);
             
           }
         else if(file.size < 1000000){
           this.flagErrorInFile=true;
           this.errorMessageInFile="يرجى تحميل صورةأقل من 1 ميغابايت";
-          console.log(this.errorMessageInFile);
+         // console.log(this.errorMessageInFile);
         }
       }
 
@@ -83,12 +83,12 @@ constructor(private router:Router,private buildingService:BuildingService,privat
           formData.append('Gas',this.addBuildingForm.value.Gas);
           formData.append('OwnerId',this.accountService.id);
           formData.append('ImageFile',this.imgFile);
-          console.log(formData);
+         // console.log(formData);
           
       this.buildingService.add(formData).subscribe(
         (data)=> {
           if(data){
-            console.log(data);
+         //   console.log(data);
             Swal.fire({
               title: "صحيح",
               text: `${data.message}`,
