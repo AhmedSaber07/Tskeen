@@ -1,21 +1,19 @@
 
 
 <div class="btn-group">
-    <button class="add" (click)="navigateToAddFlat()" > + اضافة شقة </button>
+    <button class="add" (click)="navigateToAddRoom()" > + اضافة غرفة </button>
        </div>
 
-@for(flat of flats;track $index){
-    <div class="item " (click)="nagivateToHomeRoom(flat.id)">
-        <img [src]="'https://' + flat.image" alt="image">
-
+@for(room of rooms;track $index){
+    <div class="item ">
+        <img [src]="'https://' + room.image" alt="image">
         <div class="body">
-          <h4>عدد الغرف في الشقة  {{flat.numberOfFloor}}</h4>
-          <h4>الشقه في الدور  {{flat.numberOfRooms}}</h4>
+          <h4>عدد السرير في الغرفة  {{room.numberOfBeds}}</h4>
+          <h4> تكلفة الشهر {{room.monthPrice}}</h4>
         </div>
-
         <div class="details">
-          <button class="btnedi" (click)="editFlat(flat.id)"> تعديل </button>
-          <button class="btndel" (click)="deleteFlat(flat.id)"> حذف </button>
+          <button class="btnedi" (click)="editRoom(room.id)"> تعديل </button>
+          <button class="btndel" (click)="deleteRoom(room.id)"> حذف </button>
         </div>
       </div>
     }

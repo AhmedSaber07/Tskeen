@@ -25,4 +25,15 @@ export class FlatService {
     return this.httpclient.delete<any>(`${this.baseUrl}?id=${id}`);
   }
 
+  get flatId():number {
+    return  Number(localStorage.getItem('flatId'));
+  }
+  set flatId(flatId: number){
+    localStorage.setItem('flatId',flatId.toString());
+  }
+  removeFlatId():boolean{
+    localStorage.removeItem('flatId');
+    return true;
+  }
+
 }

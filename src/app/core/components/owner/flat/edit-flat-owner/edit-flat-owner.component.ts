@@ -4,8 +4,8 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } fr
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BuildingService } from '../../../../services/building.service';
 import { FlatService } from '../../../../services/flat.service';
-import { GetAllFlats } from '../../../../models/get-all-flats';
 import Swal from 'sweetalert2';
+import { GetFlat } from '../../../../models/get-flat';
 @Component({
   selector: 'app-edit-flat-owner',
   standalone: true,
@@ -19,7 +19,7 @@ export class EditFlatOwnerComponent implements OnInit {
   flagErrorInFile: boolean=false;
   errorMessageInFile!: string;
   flatId!:number;
-  getFlat!:GetAllFlats;
+  getFlat!:GetFlat;
 
   get flatDescription() { return this.editFlatForm.get('flatDescription');}
   get NumberOfFloor() { return this.editFlatForm.get('NumberOfFloor');}

@@ -1,4 +1,4 @@
-export interface GetAllFlats {
+export interface GetFlat {
     id: number;
     discreption:string;
     numberOfFloor:number;

@@ -16,6 +16,9 @@ import { ownerGuard } from './shared/guards/owner.guard';
 import { HomeFlatOwnerComponent } from './core/components/owner/flat/home-flat-owner/home-flat-owner.component';
 import { AddFlatOwnerComponent } from './core/components/owner/flat/add-flat-owner/add-flat-owner.component';
 import { EditFlatOwnerComponent } from './core/components/owner/flat/edit-flat-owner/edit-flat-owner.component';
+import { HomeRoomOwnerComponent } from './core/components/owner/room/home-room-owner/home-room-owner.component';
+import { AddRoomOwnerComponent } from './core/components/owner/room/add-room-owner/add-room-owner.component';
+import { EditRoomOwnerComponent } from './core/components/owner/room/edit-room-owner/edit-room-owner.component';
 
 export const routes: Routes = [
     {path:'',component:MainComponent},
@@ -31,6 +34,7 @@ export const routes: Routes = [
         { path: 'personal-owner', component: PersonalOwnerComponent, title: 'Owner Personal'},
         { path: 'homeBuilding-owner', component: HomeBuildingOwnerComponent, title: 'Home Building Owner'},
         {path:'homeFlat-owner',component:HomeFlatOwnerComponent, title: 'Home Flat Owner'},
+        {path:'homeRoom-owner',component:HomeRoomOwnerComponent, title: 'Home Room Owner'},
     ]
 },
 { path: 'changePassword-owner', component: ChangePasswordOwnerComponent, title: 'Change Password Owner', canActivate: [ownerGuard] },
@@ -39,4 +43,6 @@ export const routes: Routes = [
 { path: 'editBuilding-owner', component: EditBuildingOwnerComponent, title: 'Edit Building Owner', canActivate: [ownerGuard] },
 { path: 'addFlat-owner', component: AddFlatOwnerComponent, title: 'Add Flat Owner',  canActivate: [ownerGuard]},
 { path: 'editFlat-owner', component: EditFlatOwnerComponent, title: 'Edit Flat Owner',canActivate: [ownerGuard] },
+{ path: 'addRoom-owner', component: AddRoomOwnerComponent, title: 'Add Room Owner',  canActivate: [ownerGuard]},
+{ path: 'editRoom-owner', component: EditRoomOwnerComponent, title: 'Edit Room Owner',canActivate: [ownerGuard] },
   ];
