@@ -12,7 +12,6 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './home-building-owner.component.css'
 })
 export class HomeBuildingOwnerComponent implements OnInit {
-
   buildings! : GetAllBuilding[];
   constructor(private buildingService:BuildingService,private accountService:AccountService,private router: Router){
 

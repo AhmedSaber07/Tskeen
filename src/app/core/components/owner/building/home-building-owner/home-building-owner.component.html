@@ -6,8 +6,7 @@
 
 @for(build of buildings;track $index){
     <div class="item " (click)="nagivateToHomeFlat(build.id)" >
-        <img [src]="build.image" alt="image">
-
+        <img src={{build.image}} alt="image">
         <div class="body">
           <h4> {{build.name}}</h4>
           <p> {{build.address}}</p>
