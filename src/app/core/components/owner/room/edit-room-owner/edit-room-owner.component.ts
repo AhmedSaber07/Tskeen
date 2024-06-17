@@ -167,6 +167,13 @@ export class EditRoomOwnerComponent implements OnInit{
     }
     else{
       this.editRoomForm.markAllAsTouched();
+      if(this.imgFiles.length<=0)
+        {
+          this.flagErrorInFile=true;
+          this.errorMessageInFile="يرجى تحميل صورة واحده علي الاقل";
+          console.log(this.flagErrorInFile);
+          console.log(this.errorMessageInFile);
+        }
     }
   }
 

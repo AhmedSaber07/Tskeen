@@ -125,6 +125,8 @@ this.onHeaterChange();
   }
 
   onSubmit(){
+console.log(this.flagErrorInFile);
+
     if(this.editFlatForm.valid&&!this.flagErrorInFile){
       // if(this.accountService.id)
       //   {
@@ -166,6 +168,13 @@ this.onHeaterChange();
     }
     else{
       this.editFlatForm.markAllAsTouched();
+      if(this.imgFiles.length<=0)
+        {
+          this.flagErrorInFile=true;
+          this.errorMessageInFile="يرجى تحميل صورة واحده علي الاقل";
+          console.log(this.flagErrorInFile);
+          console.log(this.errorMessageInFile);
+        }
     }
   }
 }

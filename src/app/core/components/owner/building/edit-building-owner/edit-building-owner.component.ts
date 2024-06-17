@@ -32,7 +32,7 @@ export class EditBuildingOwnerComponent implements OnInit {
     console.log('Building ID:', this.buildId);
     this.buildingService.getById(this.buildId).subscribe((data) => {
       this.getBuilding = data.data;
-      console.log(this.getBuilding.name);
+      console.log(this.getBuilding);
       this.initForm();
     });
   }
