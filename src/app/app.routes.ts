@@ -13,12 +13,16 @@ import { HomeBuildingOwnerComponent } from './core/components/owner/building/hom
 import { AddBuildingOwnerComponent } from './core/components/owner/building/add-building-owner/add-building-owner.component';
 import { EditBuildingOwnerComponent } from './core/components/owner/building/edit-building-owner/edit-building-owner.component';
 import { ownerGuard } from './shared/guards/owner.guard';
+import { HomeFlatOwnerComponent } from './core/components/owner/flat/home-flat-owner/home-flat-owner.component';
+import { AddFlatOwnerComponent } from './core/components/owner/flat/add-flat-owner/add-flat-owner.component';
+import { EditFlatOwnerComponent } from './core/components/owner/flat/edit-flat-owner/edit-flat-owner.component';
 
 export const routes: Routes = [
     {path:'',component:MainComponent},
     {path: 'login', component:LoginComponent},
     {path: 'register-owner', component:RegisterOwnerComponent},
     { path: 'home-owner', component: HomeOwnerComponent, canActivate: [ownerGuard],
+        // { path: 'home-owner', component: HomeOwnerComponent,
     children: [
         { path: '', redirectTo: 'main-owner', pathMatch: 'full' },
         { path: 'main-owner', component: MainOwnerComponent, title: 'Owner Main' },
@@ -26,11 +30,13 @@ export const routes: Routes = [
         { path: 'service-owner', component: ServiceOwnerComponent, title: 'Owner Service'},
         { path: 'personal-owner', component: PersonalOwnerComponent, title: 'Owner Personal'},
         { path: 'homeBuilding-owner', component: HomeBuildingOwnerComponent, title: 'Home Building Owner'},
+        {path:'homeFlat-owner',component:HomeFlatOwnerComponent, title: 'Home Flat Owner'},
     ]
 },
 { path: 'changePassword-owner', component: ChangePasswordOwnerComponent, title: 'Change Password Owner', canActivate: [ownerGuard] },
 { path: 'editProfile-owner', component: EditProfileOwnerComponent, title: 'Edit Profile Owner', canActivate: [ownerGuard] },
 { path: 'addBuilding-owner', component: AddBuildingOwnerComponent, title: 'Add Building Owner', canActivate: [ownerGuard] },
 { path: 'editBuilding-owner', component: EditBuildingOwnerComponent, title: 'Edit Building Owner', canActivate: [ownerGuard] },
-
+{ path: 'addFlat-owner', component: AddFlatOwnerComponent, title: 'Add Flat Owner',  canActivate: [ownerGuard]},
+{ path: 'editFlat-owner', component: EditFlatOwnerComponent, title: 'Edit Flat Owner',canActivate: [ownerGuard] },
   ];

@@ -95,6 +95,7 @@ constructor(private router:Router,private buildingService:BuildingService,privat
               icon: "success"
             });
             this.addBuildingForm.reset();
+            this.router.navigate(['/home-owner/homeBuilding-owner']);
           }
         }
       )

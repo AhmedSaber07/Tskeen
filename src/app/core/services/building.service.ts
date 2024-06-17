@@ -7,7 +7,7 @@ import { AddEditBuilding } from '../models/add-edit-building';
   providedIn: 'root'
 })
 export class BuildingService {
-  private baseUrl = 'http://sakanapi.runasp.net/api'
+  private baseUrl = 'https://sakanapi.runasp.net/api'
   constructor(private httpclient :HttpClient) { }
 
   getAll(ownerId:string): Observable<any>{
@@ -24,5 +24,16 @@ export class BuildingService {
   }
   delete(id:number): Observable<any>{
     return this.httpclient.delete<any>(`${this.baseUrl}/Building?id=${id}`);
+  }
+  
+  get buildId():number {
+    return  Number(localStorage.getItem('buildId'));
+  }
+  set buildId(buildId: number){
+    localStorage.setItem('buildId',buildId.toString());
+  }
+  removeBuildId():boolean{
+    localStorage.removeItem('buildId');
+    return true;
   }
 }

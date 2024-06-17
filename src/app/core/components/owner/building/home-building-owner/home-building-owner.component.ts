@@ -27,6 +27,12 @@ export class HomeBuildingOwnerComponent implements OnInit {
       }
   }
 
+  nagivateToHomeFlat(buildId:number){
+    this.buildingService.buildId = buildId;
+    this.router.navigate(['/home-owner/homeFlat-owner'], { queryParams: { buildId: buildId } });
+  }
+
+
   editBuild(buildId: number) {
     this.router.navigate(['/editBuilding-owner'], { queryParams: { id: buildId } });
   }

@@ -1,21 +1,21 @@
 
 
 <div class="btn-group">
-    <button class="add" [routerLink]="['/addBuilding-owner']" routerLinkActive="router-link-active" > + اضافة مبني </button>
+    <button class="add" (click)="navigateToAddFlat()" > + اضافة شقة </button>
        </div>
 
-@for(build of buildings;track $index){
-    <div class="item " (click)="nagivateToHomeFlat(build.id)" >
-        <img [src]="build.image" alt="image">
+@for(flat of flats;track $index){
+    <div class="item ">
+        <img src="sakanapi.runasp.net/images/2d75a43e-b027-406b-b98d-f749190bea09.jpg" alt="image">
 
         <div class="body">
-          <h4> {{build.name}}</h4>
-          <p> {{build.address}}</p>
+          <h4> {{flat.discreption}}</h4>
+          <!-- <p> {{flat.}}</p> -->
         </div>
 
         <div class="details">
-          <button class="btnedi" (click)="editBuild(build.id)"> تعديل </button>
-          <button class="btndel" (click)="deleteBuild(build.id)"> حذف </button>
+          <button class="btnedi" (click)="editFlat(flat.id)"> تعديل </button>
+          <button class="btndel" (click)="deleteFlat(flat.id)"> حذف </button>
         </div>
       </div>
     }

@@ -9,7 +9,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       Authorization:`Bearer ${authService.token}`
     }
   });
-  console.log(authService.token);
+  // console.log(authService.token);
   
   return next(cloneRequest);
 };

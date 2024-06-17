@@ -1,0 +1,234 @@
+<div class="container-apartment">
+    <div class="header-apartment">
+        
+        <h1>إضافة شقة</h1>
+        <img src="../../../../../../assets/imgs/logo.png" alt="شعار المباني" class="logo">
+    </div>
+    <form  [formGroup]="addFlatForm" (ngSubmit)="onSubmit()" class="form" enctype="multipart/form-data">
+        <table>
+            <tr>
+                
+
+                <td><label for="description">وصف الشقة:</label></td>
+                <td><input type="text" formControlName="flatDescription" placeholder="ادخل وصف الشقة الخاص بك"
+                    [ngClass]="{'is-invalid':(flatDescription?.touched || flatDescription?.dirty)&& flatDescription?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(flatDescription?.errors?.['required'])
+                           { <span>وصف الشقة مطلوب</span>}
+            
+                           @else if(flatDescription?.errors?.['minlength']) 
+                           { <span>الحد الأدنى لوصف الشقة هو 10</span>}
+                         </span>
+                    </td>
+
+                <td><label for="rooms"> الشقة في الدور : </label></td>
+                <td>
+                    <select id="rooms" formControlName="NumberOfRooms"
+                    [ngClass]="{'is-invalid': (NumberOfRooms?.touched || NumberOfRooms?.dirty) && NumberOfRooms?.invalid}">
+                        <option value="0">الارضي</option>
+                        <option value="1">الاول  </option>
+                        <option value="2">الثاني</option>
+                        <option value="3">الثالث</option>
+                        <option value="4">الرابع</option>
+                        <option value="5">الخامس</option>
+                        <option value="6">السادس</option>
+                        <option value="7">السابع</option>
+                        <option value="8">الثامن</option>
+                        <option value="9"> التاسع </option>
+                        <option value="10"> اعلي من ذالك </option>
+                    </select>
+                    <span class="invalid-feedback">
+                        @if(NumberOfRooms?.errors?.['required'])
+                           { <span>وصف الشقة مطلوب</span>}
+                      </span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td><label for="rooms">عدد الغرف في الشقة:</label></td>
+                <td>
+                    <select id="rooms" formControlName="NumberOfFloor"
+                    [ngClass]="{'is-invalid': (NumberOfFloor?.touched || NumberOfFloor?.dirty) && NumberOfFloor?.invalid}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <span class="invalid-feedback">
+                        @if(NumberOfFloor?.errors?.['required'])
+                           { <span>وصف الشقة مطلوب</span>}
+                      </span>
+                </td>
+
+
+
+                <td><label for="bathrooms">عدد الحمامات في الشقة:</label></td>
+                <td>
+                    <select id="bathrooms" formControlName="NumberOfBathroom"
+                    [ngClass]="{'is-invalid': (NumberOfBathroom?.touched || NumberOfBathroom?.dirty) && NumberOfBathroom?.invalid}">
+                        <option value="1">يوجد حمام واحد </option>
+                        <option value="2">يوجد حمامين</option>
+                        <option value="3">يوجد ثلاثة حمامات </option>
+                    </select>
+                    <span class="invalid-feedback">
+                        @if(NumberOfBathroom?.errors?.['required'])
+                           { <span>عدد الحمامات في الشقة مطلوب</span>}
+                      </span>
+                </td>
+            </tr>
+
+            <tr>
+
+                <tr>
+                    <td>هل يوجد غسالة:</td>
+                    <td>
+                        <input type="radio" id="washer-yes" formControlName="ThereIsWasher" value="true" (change)="onWasherChange()">
+                        <label for="washer-yes">نعم</label>
+                        <input type="radio" id="washer-no" formControlName="ThereIsWasher"  value="false" (change)="onWasherChange()">
+                        <label for="washer-no">لا</label>
+                        @if(ThereIsWasher?.touched && ThereIsWasher?.invalid)
+                        {
+                        <div class="text-danger" style="font-size: .875em;">
+                            @if(ThereIsWasher?.errors?.['required'])
+                            { <span>يجب الاجابه</span>}
+                          </div>
+                        }
+                    </td>
+                    @if(ThereIsWasher?.value==="true")
+                    {
+                <td><label for="washer-type">نوع الغسالة:</label></td>
+                <td>
+                    <select id="washer-type" formControlName="WasherType"
+                    [ngClass]="{'is-invalid': (WasherType?.touched || WasherType?.dirty) && WasherType?.invalid}">
+                        <!-- <option value="none">لا يوجد</option> -->
+                        <option value="automatic">غسالة عادية</option>
+                        <option value="automatic">أتوماتيك</option>
+                        <option value="semi-automatic">نصف أتوماتيك</option>
+                    </select>
+                    <span class="invalid-feedback">
+                        @if(WasherType?.errors?.['required'])
+                           { <span>نوع الغسالة مطلوب</span>}
+                      </span>
+                </td>
+              }
+
+
+               
+
+            </tr>
+            <tr>
+
+
+                
+
+                <td>هل يوجد سخان:</td>
+                <td>
+                    <input type="radio" id="heater-yes" formControlName="ThereIsHeater" value="true" (change)="onHeaterChange()">
+                    <label for="heater-yes">نعم</label>
+                    <input type="radio" id="heater-no" formControlName="ThereIsHeater" value="false" (change)="onHeaterChange()">
+                    <label for="heater-no">لا</label>
+                    @if(ThereIsHeater?.touched && ThereIsHeater?.invalid)
+                    {
+                    <div class="text-danger" style="font-size: .875em;">
+                        @if(ThereIsHeater?.errors?.['required'])
+                        { <span>يجب الاجابه</span>}
+                      </div>
+                    }
+                </td>
+                @if(ThereIsHeater?.value==="true")
+                {
+                <td><label for="heater-type">نوع السخان:</label></td>
+                <td>
+                    <select id="heater-type" formControlName="HeaterType"
+                    [ngClass]="{'is-invalid': (HeaterType?.touched || HeaterType?.dirty) && HeaterType?.invalid}">
+                        <!-- <option value="none">لا يوجد</option> -->
+                        <option value="electric">كهربائي</option>
+                        <option value="gas">غاز</option>
+                    </select>
+                    <span class="invalid-feedback">
+                        @if(HeaterType?.errors?.['required'])
+                           { <span>نوع السخان مطلوب</span>}
+                      </span>
+                </td>
+            }
+
+            </tr>
+
+
+            
+
+            <tr>
+                <td>هل يوجد تلفاز:</td>
+                <td>
+                    <input type="radio" id="tv-yes" formControlName="TV" value="true">
+                    <label for="tv-yes">نعم</label>
+                    <input type="radio" id="tv-no" formControlName="TV" value="false">
+                    <label for="tv-no">لا</label>
+                    @if(TV?.touched && TV?.invalid)
+                    {
+                    <div class="text-danger" style="font-size: .875em;">
+                        @if(TV?.errors?.['required'])
+                        { <span>يجب الاختيار</span>}
+                      </div>
+                    }
+                </td>
+                <td>هل يوجد انترنت:</td>
+                <td>
+                    <input type="radio" id="internet-yes" formControlName="Internet" value="true">
+                    <label for="internet-yes">نعم</label>
+                    <input type="radio" id="internet-no" formControlName="Internet" value="false">
+                    <label for="internet-no">لا</label>
+                    @if(Internet?.touched && Internet?.invalid)
+                    {
+                    <div class="text-danger" style="font-size: .875em;">
+                        @if(Internet?.errors?.['required'])
+                        { <span>يجب الاختيار</span>}
+                      </div>
+                    }
+                </td>
+            </tr>
+            
+        </table>
+        <div formArrayName="FlatImagesFile" class="col-12 mt-2">
+            @for(control of FlatImagesFile.controls;track $index){
+            <div class="row" [formGroupName]="$index">
+              <div class="col-md-3">
+                <label>صورة</label>
+                <input type="file"  (change)="uploadFile($event,$index)" class="form-control input-style">
+              </div>
+              <div class="col-md-6 mt-4">
+                <div class="row justify-content-center align-items-center">
+                  <div class="col-6">
+                    <button type="button" class="btn btn-add d-flex justify-content-center align-items-center w-100"
+                      (click)="addFlatImageFile()">
+                      <img
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIG9wYWNpdHk9IjAuNCIgZD0iTTI2Ljk4MzMgMy4zMzMwMUgxMy4wMTY2QzYuOTQ5OTIgMy4zMzMwMSAzLjMzMzI1IDYuOTQ5NjcgMy4zMzMyNSAxMy4wMTYzVjI2Ljk2NjNDMy4zMzMyNSAzMy4wNDk3IDYuOTQ5OTIgMzYuNjY2MyAxMy4wMTY2IDM2LjY2NjNIMjYuOTY2NkMzMy4wMzMzIDM2LjY2NjMgMzYuNjQ5OSAzMy4wNDk3IDM2LjY0OTkgMjYuOTgzVjEzLjAxNjNDMzYuNjY2NiA2Ljk0OTY3IDMzLjA0OTkgMy4zMzMwMSAyNi45ODMzIDMuMzMzMDFaIiBmaWxsPSIjMEFCM0IxIi8+DQo8cGF0aCBkPSJNMjYuNjY2NiAxOC43NDk3SDIxLjI0OTlWMTMuMzMzQzIxLjI0OTkgMTIuNjQ5NyAyMC42ODMzIDEyLjA4MyAxOS45OTk5IDEyLjA4M0MxOS4zMTY2IDEyLjA4MyAxOC43NDk5IDEyLjY0OTcgMTguNzQ5OSAxMy4zMzNWMTguNzQ5N0gxMy4zMzMzQzEyLjY0OTkgMTguNzQ5NyAxMi4wODMzIDE5LjMxNjMgMTIuMDgzMyAxOS45OTk3QzEyLjA4MzMgMjAuNjgzIDEyLjY0OTkgMjEuMjQ5NyAxMy4zMzMzIDIxLjI0OTdIMTguNzQ5OVYyNi42NjYzQzE4Ljc0OTkgMjcuMzQ5NyAxOS4zMTY2IDI3LjkxNjMgMTkuOTk5OSAyNy45MTYzQzIwLjY4MzMgMjcuOTE2MyAyMS4yNDk5IDI3LjM0OTcgMjEuMjQ5OSAyNi42NjYzVjIxLjI0OTdIMjYuNjY2NkMyNy4zNDk5IDIxLjI0OTcgMjcuOTE2NiAyMC42ODMgMjcuOTE2NiAxOS45OTk3QzI3LjkxNjYgMTkuMzE2MyAyNy4zNDk5IDE4Ljc0OTcgMjYuNjY2NiAxOC43NDk3WiIgZmlsbD0iIzBBQjNCMSIvPg0KPC9zdmc+DQo="
+                        class="ml-3" />
+                        add
+                    </button>
+                  </div>
+                  <div class="col-6">
+                    <button type="button" class="btn btn-delete d-flex justify-content-center align-items-center w-100"
+                      (click)="removeFlatImagesFile($index)">
+                      <img src="https://insurance.qpolicytest.com/_nuxt/img/delete.3247e2a.svg" class="ml-3" />
+                      delete
+                    </button>
+                  </div>
+                  <div class="text-danger" style="font-size: .875em;">
+                    @if(flagErrorInFile)
+                    { <span>{{errorMessageInFile}}</span>}
+                   </div>
+                </div>
+              </div>
+            </div>
+        }
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="save-button">حفظ</button>
+            <button type="button" class="cancel-button" [routerLink]="['/home-owner/homeFlat-owner']" routerLinkActive="router-link-active" >إلغاء</button>
+        </div>
+        {{addFlatForm.value|json}}
+        {{addFlatForm.valid}}
+    </form>
+</div>
