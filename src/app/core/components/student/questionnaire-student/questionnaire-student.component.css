@@ -1,0 +1,223 @@
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.logo {
+    width: 100px;
+    margin-right: 80%;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-top: -7%;
+}
+.form {
+    margin-top: 50px;
+
+}
+
+.form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+
+   
+
+}
+
+.form p{
+
+    margin-right: 7%;
+    font-size: larger;
+}
+.form td {
+    padding: 10px;
+    vertical-align: middle;
+    
+    
+    
+}
+
+.form label {
+    font-weight: bold;
+}
+
+.form input[type="text"],
+.form input[type="number"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="date"],
+.form select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    
+}
+
+.form input[type="radio"] {
+    margin-right: 5px;
+   
+}
+
+.form .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 15px;
+    width: 150px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 3%;
+
+}
+
+.question {
+    margin: 20px 0;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+}
+
+.option {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+
+}
+
+
+
+
+.option.one { background: #ffdddd; }
+.option.two { background: #ffcccc; }
+.option.three { background: #ffbbbb; }
+.option.four { background: #ffaaaa; }
+.option.five { background: #ff9999; }
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + .option {
+    transform: scale(3.2);
+    background-color: #00bfa5;
+    transition: all 0.3s ease-in-out;
+    color: white;
+
+}
+
+
+
+hr {
+    border: 2px;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+.submit-btn, .cancel-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    width: 100px;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.submit-btn {
+    background-color: #00bfa5;
+    color: white;
+    margin-right: 20%;
+}
+
+.cancel-btn {
+    background-color: #ff5252;
+    color: white;
+    margin-right: 30%;
+
+}
+
+
+.option:hover ,input:hover, .submit-btn:hover ,.cancel-btn:hover  {
+    transform: scale(1.5);
+  }
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form table, 
+    .form tr, 
+    .form td {
+        display: block;
+        width: 100%;
+        
+        
+    }
+    
+    .form td {
+        padding: 10px 0;
+    }
+    
+    .form td label {
+        display: block;
+        margin-bottom: 5px;
+        margin-right: 5vw;
+    }
+    
+    .form-buttons {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    
+    .form-buttons button {
+        width: 70%;
+        margin-bottom: 10px;
+       
+    }
+
+    h1 {
+        font-size: 1em;
+    }
+
+
+}

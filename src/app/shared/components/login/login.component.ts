@@ -67,10 +67,10 @@ export class LoginComponent implements OnInit{
             this.accountService.id=this.response.id;
             this.accountService.token = this.response.token;
             this.accountService.role = this.response.role;
-          //  console.log(this.accountService.role);
-           // console.log(this.accountService.token);
-         //   console.log(this.accountService.id);
+            if(this.userType==='owner')
             this.router.navigate(['/home-owner']);
+          else
+          this.router.navigate(['/home-student']);
           }
           else {
             Swal.fire({

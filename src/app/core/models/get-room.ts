@@ -13,4 +13,5 @@ export interface GetRoom {
     dayPrice:number;
     currentState:number;
     images?:string[];
+    address?:string;
 }

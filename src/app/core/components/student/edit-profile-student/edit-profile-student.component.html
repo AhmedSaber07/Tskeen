@@ -1,0 +1,224 @@
+<body>
+    <div class="container-apartment">
+        <div class="header-apartment">
+            
+            <h1>تعديل بيانات الطالب  </h1>
+            <img src="../../../../../assets/imgs/logo.png" alt="شعار المباني" class="logo">
+        </div>
+        @if(studentForm)
+        {
+        <form  [formGroup]="studentForm" (ngSubmit)="onSubmit()"  class="form">
+            <table>
+                <tr>
+                    
+
+                    <td><label for="firstName">الاسم الاول:</label></td>
+                    <td><input type="text" formControlName="firstName" placeholder="ادخل اسم الاول الخاص بك"
+                        [ngClass]="{'is-invalid':(firstName?.touched || firstName?.dirty)&& firstName?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(firstName?.errors?.['required'])
+                           { <span>الاسم الاول مطلوب</span>}
+            
+                           @else if(firstName?.errors?.['minlength']) 
+                           { <span>الحد الأدنى للاسم الاول هو 3</span>}
+                         </span>
+                    </td>
+
+                    <td><label for="lastName">اسم العائلة:</label></td>
+                    <td><input type="text" formControlName="lastName" placeholder="ادخل اسم العائلة الخاص بك"
+                        [ngClass]="{'is-invalid':(lastName?.touched || lastName?.dirty)&& lastName?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(lastName?.errors?.['required'])
+                           { <span>اسم العائلة مطلوب</span>}
+            
+                           @else if(lastName?.errors?.['minlength']) 
+                           { <span>الحد الأدنى لاسم العائلة هو 3</span>}
+                         </span>
+                    </td>
+
+
+                </tr>
+                
+
+                <tr>
+
+                    <td><label for="email" class="boxss">البريد الالكتروني:</label></td>
+                    <td><input readonly type="email" formControlName="email" placeholder="user@example.com"
+                        [ngClass]="{'is-invalid':(email?.touched || email?.dirty)&& email?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(email?.errors?.['required'])
+                           { <span>البريد الالكتروني مطلوب</span>}
+                           
+                           @else if(email?.errors?.['pattern']) 
+                           { <span>البريد الالكتروني غير صالح</span> }
+                         </span>
+                    </td>  
+
+                    <td><label for="phoneNumber" class="boxss">رقم الهاتف:</label></td>
+                    <td><input type="tel" formControlName="phone" placeholder=" ادخل رقم الهاتف الخاص بك"
+                        [ngClass]="{'is-invalid':(phone?.touched || phone?.dirty)&& phone?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(phone?.errors?.['required'])
+                           {
+                             <span>رقم الهاتف مطلوب</span>
+                           }
+                           @else if(phone?.errors?.['pattern']) 
+                           {
+                             <span>رقم الهاتف غر صالح</span>
+                           }
+                         </span>
+                    </td>  
+                   
+                </tr>
+
+
+
+
+                <tr>
+
+                    <td><label for="governorate">   محافظة :  </label></td>
+                    <td>
+                        <select id="governorate" 
+                        formControlName="governorate"
+                        [ngClass]="{'is-invalid': (governorate?.touched || governorate?.dirty) && governorate?.invalid}"
+                        >
+                        <option value="قنا">قنا</option>
+                        <option value="الإسكندرية">الإسكندرية</option>
+                        <option value="الإسماعيلية">الإسماعيلية</option>
+                        <option value="كفر الشيخ">كفر الشيخ</option>
+                        <option value="أسوان">أسوان</option>
+                        <option value="أسيوط">أسيوط</option>
+                        <option value="الأقصر">الأقصر</option>
+                        <option value="الوادي الجديد">الوادي الجديد</option>
+                        <option value="شمال سيناء">شمال سيناء</option>
+                        <option value="البحيرة">البحيرة</option>
+                        <option value="بني سويف">بني سويف</option>
+                        <option value="بورسعيد">بورسعيد</option>
+                        <option value="البحر الأحمر">البحر الأحمر</option>
+                        <option value="الجيزة">الجيزة</option>
+                        <option value="الدقهلية">الدقهلية</option>
+                        <option value="جنوب سيناء">جنوب سيناء</option>
+                        <option value="دمياط">دمياط</option>
+                        <option value="سوهاج">سوهاج</option>
+                        <option value="السويس">السويس</option>
+                        <option value="الشرقية">الشرقية</option>
+                        <option value="الغربية">الغربية</option>
+                        <option value="الفيوم">الفيوم</option>
+                        <option value="القاهرة">القاهرة</option>
+                        <option value="القليوبية">القليوبية</option>
+                        <option value="الغربية">الغربية</option>
+                        <option value="مطروح">مطروح</option>
+                        <option value="المنوفية">المنوفية</option>
+                        <option value="المنيا">المنيا</option>
+                        
+                            
+    
+                        </select>
+                        <span class="invalid-feedback">
+                            @if(governorate?.errors?.['required'])
+                               { <span>يجب اختيار محافظه</span>}
+                          </span>
+    
+                    </td>
+                    <td><label for="city">المدينة :</label></td>
+                    <td><input type="text" formControlName="city" placeholder="ادخل اسم المدينة الخاص بك"
+                        [ngClass]="{'is-invalid':(city?.touched || city?.dirty)&& city?.invalid}">
+                        <span class="invalid-feedback">
+                           @if(city?.errors?.['required'])
+                           { <span>اسم المدينة مطلوب</span>}
+                         </span>
+                    </td>
+
+
+                   
+                    <tr>
+
+                        <td><label for="faculty">  اختار كليتك :  </label></td>
+                        <td>
+                            <select id="faculty"
+                            formControlName="faculty" [ngClass]="{'is-invalid': (faculty?.touched || faculty?.dirty) && faculty?.invalid}">
+                            <option value="الحاسبات و المعلومات">الحاسبات و المعلومات</option>
+                            <option value="الهندسة">الهندسة</option>
+                            <option value="الطب">الطب</option>
+                            <option value="تربية">تربية</option>
+                            <option value="تجارة">تجارة</option>
+                            <option value="حقوق">حقوق</option>
+                            <option value="اعلام">اعلام</option>
+                            <option value="علوم">علوم</option>
+                            <option value="اداب">اداب</option>
+                            <option value="السن">السن</option>
+                            <option value="فنون جميلة">فنون جميلة</option>
+                            <option value="دراسات عليا">دراسات عليا</option>
+                            <option value="خدمة اجتماعية">خدمة اجتماعية</option>
+                            <option value="تمريض">تمريض</option>
+                            <option value="معهد">معهد</option>                        
+                            </select>
+                            <span class="invalid-feedback">
+                                @if(faculty?.errors?.['required'])
+                                   { <span>اختيار الكليه مطلوب</span>}
+                              </span>
+                        </td>
+
+
+                        
+                        <td><label for="grade">   الفرقة الدراسية :  </label></td>
+                        <td>
+                            <select id="grade"
+                            formControlName="grade" [ngClass]="{'is-invalid': (grade?.touched || grade?.dirty) && grade?.invalid}"
+                            >
+                            <option value="1" >الفرقة الاول</option>
+                            <option value="2" >الفرقة الثانية</option>
+                            <option value="3" >الفرقة الثالثة</option>
+                            <option value="4" >الفرقة الرابعة</option>
+                            <option value="5" >الفرقة الخامسة</option>                        
+                            </select>
+                            <span class="invalid-feedback">
+                                @if(grade?.errors?.['required'])
+                                   { <span>الفرقة الدراسية مطلوب</span>}
+                              </span>
+                         </td>
+
+                     </tr>
+
+                    
+                
+                    <tr>
+                    <td>   النوع :</td>
+                    <td>
+                        <input type="radio" id="gender-m" formControlName="gender" [value]="0">
+                        <label for="gender-m">ذكر</label>
+                        <input type="radio" id="UserGender-ب" formControlName="gender" [value]="1">
+                        <label for="gender-f">انثي</label>
+                        @if(gender?.touched && gender?.invalid)
+                        {
+                        <div class="text-danger" style="font-size: .875em;">
+                            @if(gender?.errors?.['required'])
+                            { <span>يجب اختيار النوع</span>}
+                          </div>
+                        }
+                    </td>
+
+                        <td><label for="birthDate">تاريخ الميلاد  :</label></td>
+                        <td><input type="date" formControlName="birthDate" placeholder="ادخل اسم المدينة الخاص بك"
+                            [ngClass]="{'is-invalid':(birthDate?.touched || birthDate?.dirty)&& birthDate?.invalid}">
+                            <span class="invalid-feedback">
+                               @if(birthDate?.errors?.['required'])
+                               { <span>تاريخ الميلاد مطلوب</span>}
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+
+                  
+               
+            </table>
+            <div class="form-buttons">
+                <button type="submit" class="save-button"> حفظ</button>
+                <button type="button" class="cancel-button"  [routerLink]="['/home-student']" routerLinkActive="router-link-active" >إلغاء</button>
+            </div>
+        </form>
+    }
+    </div>
+</body>

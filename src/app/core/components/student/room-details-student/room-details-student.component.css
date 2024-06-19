@@ -1,0 +1,130 @@
+body{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.building{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vw;
+}
+
+ .building .building_img{
+    width: 40%;
+ }
+
+.building .building_details{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    font-size: 2vw;
+    justify-content: space-between;
+    align-items: end;
+    font-weight: 700;
+    box-shadow: 0px 4px 8px rgba(202,37,16,0.3);
+}
+
+
+
+
+.flat{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vw;
+}
+
+ .flat .flat_img{
+    width: 40%;
+ }
+
+.flat .flat_details{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    font-size: 2vw;
+    justify-content: space-between;
+    align-items: end;
+    font-weight: 700;
+    box-shadow: 0px 4px 8px rgba(202,37,16,0.3);
+}
+
+
+
+
+
+
+.room{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vw;
+}
+
+ .room .room_img{
+    width: 40%;
+ }
+
+.room .room_details{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    font-size: 2vw;
+    justify-content: space-between;
+    align-items: end;
+    font-weight: 700;
+    box-shadow: 0px 4px 8px rgba(202,37,16,0.3);
+}
+
+
+
+
+
+h2{
+    text-align: center;
+}
+
+
+@media (max-width: 768px){
+    .building{
+        flex-direction: column;
+    }
+
+    .room{
+        flex-direction: column;
+    }
+
+    .flat{
+        flex-direction: column;
+    }
+
+   .room .room_details{
+        width: 100%;
+        font-size: 3vw;
+    }
+
+    .room .room_img{
+        width: 100%;
+    }
+
+    .flat .flat_details{
+        width: 100%;
+        font-size: 3vw;
+    }
+
+    .flat .flat_img{
+        width: 100%;
+    }
+
+
+    .building .building_details{
+        width: 100%;
+        font-size: 3vw;
+    }
+
+    .building .building_img{
+        width: 100%;
+    }
+}

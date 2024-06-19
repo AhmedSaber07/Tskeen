@@ -1,0 +1,30 @@
+<div class="navbar">
+    <div class="search">
+      
+        <i class="bi bi-search"></i>
+        <span >بحث</span>
+        <input type="text" class="inp" placeholder="">
+    </div>
+
+    <button id="logout-button" (click)="logout()" >
+        تسجيل الخروج
+      </button>
+</div>
+<router-outlet></router-outlet>
+<div class="row justify-content-evenly m-5 ">
+    <a [routerLink]="['./recommendedRooms-student']" routerLinkActive="router-link-active"  class="element col-3"><i class="bi bi-house-door-fill"></i> <span>الخدمات</span></a>
+    <a [routerLink]="['./personal-student']" class="element col-3"><i class="bi bi-person-circle"></i><span>الصفحة الشخصية</span></a>
+    <a [routerLink]="['./notify-student']" class="element col-3"><i class="bi bi-bell-fill"></i><span> الاشعارات </span></a>
+</div>
+   
+    <script>
+       const iconContainer = document.querySelector('.element');
+   
+   iconContainer.addEventListener('click', () => {
+     iconContainer.classList.toggle('active');
+   });
+    </script>
+   
+       <script src="https://kit.fontawesome.com/e5f98d5919.js" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+       <script src="https://kit.fontawesome.com/e5f98d5919.js" crossorigin="anonymous"></script>

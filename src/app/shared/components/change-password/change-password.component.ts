@@ -1,27 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Changepassword } from '../../../../shared/models/changepassword';
 import { Router, RouterLink } from '@angular/router';
-import { AccountService } from '../../../services/account.service';
-import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import { CommonModule } from '@angular/common';
+import { AccountService } from '../../../core/services/account.service';
+import { Changepassword } from '../../models/changepassword';
+
 @Component({
-  selector: 'app-change-password-owner',
+  selector: 'app-change-password',
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule,RouterLink],
-  templateUrl: './change-password-owner.component.html',
-  styleUrl: './change-password-owner.component.css'
+  templateUrl: './change-password.component.html',
+  styleUrl: './change-password.component.css'
 })
-export class ChangePasswordOwnerComponent implements OnInit {
-  ownerForm!: FormGroup;
+export class ChangePasswordComponent implements OnInit {
+  changePasswordForm!: FormGroup;
   changePassword!:Changepassword;
   passwordPattern = /^\d{6,}$/;
   constructor(private router:Router,private accountService:AccountService,private fb: FormBuilder){
 
   }
   ngOnInit(): void {
-    this.ownerForm = this.fb.group({
+    this.changePasswordForm = this.fb.group({
       currentPassword: ['', [Validators.required,Validators.minLength(6)]],
       newPassword: ['', [Validators.required, Validators.minLength(6),Validators.pattern(this.passwordPattern)]],
       confirmNewPassword: ['', [Validators.required]] 
@@ -46,18 +46,28 @@ passwordMatchValidator(group: FormGroup) {
   return true;
 }
 
-get currentPassword() { return this.ownerForm.get('currentPassword');}
-get newPassword() { return this.ownerForm.get('newPassword');}
-get confirmNewPassword() { return this.ownerForm.get('confirmNewPassword');}
+get currentPassword() { return this.changePasswordForm.get('currentPassword');}
+get newPassword() { return this.changePasswordForm.get('newPassword');}
+get confirmNewPassword() { return this.changePasswordForm.get('confirmNewPassword');}
 
+
+navigateBackToHome(){
+ if(this.accountService.role == 'owner')
+  {
+    this.router.navigate(['/home-owner']);
+  } 
+  else{
+    this.router.navigate(['/home-student']);
+  }
+}
 
   onSubmit(){
-    if(this.ownerForm.valid){
+    if(this.changePasswordForm.valid){
       if(this.accountService.id){
       this.changePassword ={
         id:this.accountService.id,
-        currentPassword:this.ownerForm.value.currentPassword,
-        newPassword:this.ownerForm.value.newPassword
+        currentPassword:this.changePasswordForm.value.currentPassword,
+        newPassword:this.changePasswordForm.value.newPassword
       }
     }
   //  console.log(this.changePassword);
@@ -74,8 +84,10 @@ get confirmNewPassword() { return this.ownerForm.get('confirmNewPassword');}
               text: `${data.message}`,
               icon: "success"
             });
-  
+            if(this.accountService.role==='owner')
             this.router.navigate(['/home-owner']);
+          else
+          this.router.navigate(['/home-student']);
   
           }
       },
@@ -90,7 +102,7 @@ get confirmNewPassword() { return this.ownerForm.get('confirmNewPassword');}
     }
     }
     else{
-      this.ownerForm.markAllAsTouched();
+      this.changePasswordForm.markAllAsTouched();
       return;
     }
   }

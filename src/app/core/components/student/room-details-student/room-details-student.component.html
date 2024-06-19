@@ -1,0 +1,74 @@
+@if(room)
+{
+<div class="room" >
+    @if(room.images)
+    {
+        @for(img of room.images;track $index)
+        {
+    <img [src]="'https://' + img" alt="صور الغرف"  class="room_img">
+        }
+    }
+    <div class="room_details">
+        <h2> <u>   تفاصيل الغرفة  </u></h2>
+        <p>وصف الغرفة : {{room.description}}</p>
+        <p>يوجد تكييف : @if(room.airCondition){<span>نعم</span>}@else{<span>لا</span>}</p>
+        <p>عدد السراير : {{room.numberOfBeds}}</p>
+        <p>عدد الكراسي : {{room.numberOfChairs}}</p>
+        <p>عدد الطرابيزات : {{room.numberOfDisks}}</p> 
+        <p>عدد الدولايب : {{room.numberOfCupboards}}</p>
+        <p>سعر الخدمات الاضافية : {{room.servicesPrice}}</p> 
+        <p>مبلغ التأمين : {{room.insurancePrice}}</p>
+        <p>تكلفة الشهر : {{room.monthPrice}}</p>
+
+    </div>
+</div>
+}
+@if(flat)
+{
+<div class="flat">
+    @if(flat.images)
+    {
+        @for(img of flat.images;track $index)
+        {
+    <img [src]="'https://' + img" alt="صور الشقق"   class="flat_img">
+        }
+    }
+    <div class="flat_details">
+        <h2> <u>   تفاصيل الشقة  </u></h2>
+        <p>وصف الشقة : {{flat.discreption}}</p>
+        <p>الدور رقم : {{flat.numberOfRooms}}</p>
+        <p>عدد الغرف : {{flat.numberOfFloor}}</p>
+        <p>يوجد غساله : @if(flat.thereIsWasher){<span>نعم</span>}@else{<span>لا</span>}</p>
+        @if(flat.thereIsWasher)
+        {
+        <p>نوع الغساله : {{flat.washerType}}</p> 
+        }
+        <p>يوجد بوتوجاز : @if(flat.thereIsHeater){<span>نعم</span>}@else{<span>لا</span>}</p>
+        @if(flat.thereIsHeater)
+        {
+        <p>نوع بوتوجاز : {{flat.heaterType}}</p> 
+        }
+        <p>يوجد تلفاز : @if(flat.tv){<span>نعم</span>}@else{<span>لا</span>}</p>
+        <p>يوجد انترنت : @if(flat.internet){<span>نعم</span>}@else{<span>لا</span>}</p>
+        <p>عدد الحمامات في الشقة : {{flat.numberOfBathroom}}</p>
+
+    </div>
+</div>
+}
+@if(build)
+{
+<div class="building">
+    @if(build.image)
+    {
+    <img [src]="'https://' + build.image" alt=" صور المبني"  class="building_img">
+    }
+    <div class="building_details">
+        <h2> <u>  تفاصيل المبنى </u></h2>
+           <p>اسم السكن : {{build.name}}</p>
+           <p>العنوان : {{build.address}}</p>
+           <p>الوصف : {{build.description}}</p>
+           <p>نوع السكن  : @if(build.userGender===0){<span> اولاد </span>}@else{<span> بنات </span>}</p>
+           <p>يتوفر غاز : @if(build.gas){<span> نعم </span>}@else{<span> لا </span>}</p> 
+    </div>
+</div>
+}

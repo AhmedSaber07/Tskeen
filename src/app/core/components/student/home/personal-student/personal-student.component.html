@@ -1,0 +1,107 @@
+<div class="container col-sm-12 ">
+    <div class="row mt-5">
+    <form  method="post" class="form col-sm-5  col-md-6 ">
+    <div class="form-group">
+        <p>  اسم المستخدم :
+            @if(studentProfile)
+            {
+            {{studentProfile.fullName}}
+            }
+            </p>
+    </div>
+    
+    <div class="form-group ">
+       <p>  البريد الالكتروني : 
+        @if(studentProfile)
+        {
+        {{studentProfile.email}}
+        }
+ 
+       </p>
+       
+    </div>
+    
+    <div class="form-group">
+        <p>  رقم الهاتف  :
+            @if(studentProfile)
+            {
+            {{studentProfile.phoneNumber}}
+            }
+             </p>
+    </div>
+
+    <div class="form-group">
+        <p> الكلية :
+            @if(studentProfile)
+            {
+            {{studentProfile.faculty}}
+            }
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p> العنوان :
+            @if(studentProfile)
+            {
+            {{studentProfile.address}}
+            }
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p> النوع: 
+            @if(studentProfile)
+            {
+            {{studentProfile.gender === 0 ? 'ذكر' : 'انثي'}}
+            }
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p> الفرقه الدراسيه: 
+            @if(studentProfile)
+            {
+                @if(studentProfile.grade ===1)
+                {
+                    الفرقة الاولي
+                }
+                @if(studentProfile.grade ===2)
+                {
+                    الفرقة الثانية
+                }
+                @if(studentProfile.grade ===3)
+                {
+                    الفرقة الثالثة
+                }
+                @if(studentProfile.grade ===4)
+                {
+                    الفرقة الرابعة
+                }
+                @if(studentProfile.grade ===5)
+                {
+                    الفرقة الخامسة
+                }
+            }
+        </p>
+    </div>
+
+</form>
+<div class="logo   col-sm-5  col-md-6 mb-5  ">
+    <img src="../../../../../../assets/imgs/logo.png" alt="Logo">
+</div> 
+
+</div>
+
+</div>
+
+
+<div class="button-group col-11 mb-5">
+    <button type="button" [routerLink]="['/editProfile-student']" routerLinkActive="router-link-active" >تعديل البيانات الشخصية</button>
+    <button type="button" [routerLink]="['/change-password']" routerLinkActive="router-link-active">تغيير كلمة السر</button>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
