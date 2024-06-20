@@ -1,0 +1,38 @@
+body{
+    direction: rtl;
+  
+}
+
+
+.main{
+    width: 100%;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 2vw;
+    align-items: center;
+    box-shadow: 0px 8px 18px rgba(164, 183, 21, 0.3);
+    margin-top: 2vw;
+  
+}
+
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.confirm{
+background-color: rgb(46, 212, 118);
+width: 10%;
+border-radius: 15px;
+font-size: 1.5vw;
+}
+
+
+.delete{
+background-color: red;
+width: 10%;
+border-radius: 15px;
+font-size: 1.5vw;
+}

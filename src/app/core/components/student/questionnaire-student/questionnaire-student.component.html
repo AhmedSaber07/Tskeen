@@ -4,7 +4,7 @@
     <br>
     <hr>
     <!-- [formGroup]="questionnaireStudentForm" -->
-    <form   class="form"  (ngSubmit)="onSubmit()">
+    <!-- <form   class="form"  (ngSubmit)="onSubmit()">
         <table>
           <b> <u> <p> رقم 1 يدل علي فعل الشئ و رقم 5 يدل علي عدم فعله :</p> </u></b>
 
@@ -1548,5 +1548,31 @@
         <button type="submit" class="submit-btn" (click)="onSubmit()">إرسال</button>
         <button type="button" class="cancel-btn">إلغاء</button>
 
-    </form>
+    </form> -->
+   
+    <form class="form" (ngSubmit)="onSubmit()" #questionForm="ngForm">
+        <table>
+          <b><u><p>رقم 1 يدل علي فعل الشئ و رقم 5 يدل علي عدم فعله :</p></u></b>
+          @for(question of questions;track $index)
+          {
+            <div class="question">
+              <p>{{$index + 1}} - {{ question.text }}</p>
+              <div class="options">
+                @for(option of options;track $index)
+                {
+                  <label>
+                    <input type="radio" name="q{{$index + 1}}{{question.num}}" [value]="option" [(ngModel)]="answers[question.num]" required>
+                    <span class="option" >{{ option }}</span>
+                  </label>
+                }
+              </div>
+            </div>
+          }
+          <hr>
+        </table>
+        <button type="submit" class="submit-btn">إرسال</button>
+        <!-- <button type="button" class="cancel-btn" (click)="onCancel()">إلغاء</button> -->
+      </form>
+      
+    
 </div>

@@ -1,0 +1,17 @@
+@if(ownerRequests)
+{
+@for(request of ownerRequests;track $index)
+{
+<div  class="main">
+  <a (click)="navigateToStudentProfile(request.studentId)"> <i class="bi bi-person-circle"></i>{{request.fullName}}</a>
+  <a (click)="navigateToRoom(request.roomId)"> <i class="bi bi-house-door-fill"></i> لينك لصفحة الاوضة  </a>
+  <i class="bi bi-chat-dots-fill">{{request.message}}</i>
+<!-- <button class="confirm" (click)="confirmBooking(request.id)"> تاكيد </button> -->
+<button class="delete" (click)="CancelBooking(request.id)"> انهاء الحجز </button>
+    </div>
+  }
+}
+@else {
+    <h3 class="text-center fst-italic fw-bold pt-3">لا يوجد طلبات حجز </h3>
+  }
+      <script src="https://kit.fontawesome.com/e5f98d5919.js" crossorigin="anonymous"></script>

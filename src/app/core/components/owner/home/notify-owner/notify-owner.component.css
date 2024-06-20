@@ -1,38 +1,51 @@
-body{
-    direction: rtl;
-  
-}
 
-
-.main{
-    width: 100%;
-    border-radius: 40px;
+.content{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    font-size: 2vw;
-    align-items: center;
-    box-shadow: 0px 8px 18px rgba(164, 183, 21, 0.3);
-    margin-top: 2vw;
-  
-}
-
-a{
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.confirm{
-background-color: rgb(46, 212, 118);
-width: 10%;
-border-radius: 15px;
-font-size: 1.5vw;
-}
-
-
-.delete{
-background-color: red;
-width: 10%;
-border-radius: 15px;
-font-size: 1.5vw;
-}
+    flex-direction: column;
+    }
+    
+    
+    .main{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .confirmed{
+        font-size: 2vw;
+        border: 2px rgb(57, 214, 123) solid;
+        border-radius: 20px;
+       padding-right: 5%;
+        padding-left: 5%;
+        background-color: rgb(57, 214, 123);
+    }
+    
+    .notconfirmed{
+        font-size: 2vw;
+        border: 2px rgb(57, 214, 123) solid;
+        border-radius: 20px;
+       padding-right: 5%;
+        padding-left: 5%;
+        background-color: rgb(57, 214, 123);
+    }
+    
+    .confirmed:hover{
+        background-color: aqua;
+        border: 2px aqua solid;
+    }
+    
+    .notconfirmed:hover{
+        background-color: aqua;
+        border: 2px aqua solid;
+    }
+    @media (max-width: 768px){
+        
+    .notconfirmed{
+        font-size: 4vw;
+    }
+    
+    .confirmed{
+        font-size: 4vw;
+    }
+    
+    }

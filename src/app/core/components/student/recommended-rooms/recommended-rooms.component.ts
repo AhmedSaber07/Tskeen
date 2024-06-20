@@ -16,29 +16,28 @@ export class RecommendedRoomsComponent implements OnInit {
   rooms!:GetRoom[];
 constructor(private bookingService:BookingService,private router:Router,private roomService:RoomService,private accountService:AccountService){}
   ngOnInit(): void {
-    // if(this.accountService.id)
-    //   {
-    // this.roomService.GetAllRoomsRecommended(this.accountService.id).subscribe(
+    if(this.accountService.id)
+      {
+    this.roomService.GetAllRoomsRecommended(this.accountService.id).subscribe(
+      (data)=>{
+        this.rooms = data.data;
+      //  console.log(this.rooms);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+      }
+    // this.roomService.GetAllRooms().subscribe(
     //   (data)=>{
     //     this.rooms = data.data;
     //    console.log(this.rooms);
     //   },
-    //   (error)=>{
-    //     console.log(error);
+    //   (err)=>{
+    //     console.log(err);
+        
     //   }
     // )
-
-    //   }
-    this.roomService.GetAllRooms().subscribe(
-      (data)=>{
-        this.rooms = data.data;
-       console.log(this.rooms);
-      },
-      (err)=>{
-        console.log(err);
-        
-      }
-    )
   }
 
   navigateToRoomDetails(roomId:number){

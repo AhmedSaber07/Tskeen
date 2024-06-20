@@ -5,9 +5,8 @@ import { AccountService } from '../../core/services/account.service';
 export const studentGuard: CanActivateFn = (route, state) => {
   const accountService = inject(AccountService);
   const _route = inject(Router); 
-  if(accountService.isAuthenticated()&& accountService.isStudent() &&accountService.isFirstRegisterStudent())
+  if(accountService.isAuthenticated()&& accountService.isStudent() && accountService.isFirstRegisterStudent())
   {
-    _route.navigate(['/confirm-register-student']);
   return true;
   }
   else if(accountService.isAuthenticated()&& accountService.isStudent() )

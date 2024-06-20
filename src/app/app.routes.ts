@@ -30,6 +30,8 @@ import { authenticateGuard } from './shared/guards/authenticate.guard';
 import { EditProfileStudentComponent } from './core/components/student/edit-profile-student/edit-profile-student.component';
 import { RecommendedRoomsComponent } from './core/components/student/recommended-rooms/recommended-rooms.component';
 import { RoomDetailsStudentComponent } from './core/components/student/room-details-student/room-details-student.component';
+import { NotConfirmedBookingOwnerComponent } from './core/components/owner/home/not-confirmed-booking-owner/not-confirmed-booking-owner.component';
+import { ConfirmedBookingOwnerComponent } from './core/components/owner/home/confirmed-booking-owner/confirmed-booking-owner.component';
 
 export const routes: Routes = [
     {path:'',redirectTo:'main', pathMatch: 'full' },
@@ -38,18 +40,22 @@ export const routes: Routes = [
     {path: 'change-password', component:ChangePasswordComponent,canActivate:[authenticateGuard]},
     {path: 'register-owner', component:RegisterOwnerComponent},
     {path: 'register-student', component:RegisterStudentComponent},
-    {path: 'confirm-register-student', component:ConfirmRegisterStudentComponent},
-    {path: 'questionnaire-student', component:QuestionnaireStudentComponent},
+    {path: 'confirm-register-student', component:ConfirmRegisterStudentComponent,canActivate:[studentGuard]},
+    {path: 'questionnaire-student', component:QuestionnaireStudentComponent,canActivate:[studentGuard]},
     { path: 'home-owner', component: HomeOwnerComponent, canActivate: [ownerGuard],
         // { path: 'home-owner', component: HomeOwnerComponent,
     children: [
         { path: '', redirectTo: 'main-owner', pathMatch: 'full' },
         { path: 'main-owner', component: MainOwnerComponent, title: 'Owner Main' },
-        { path: 'notify-owner', component: NotifyOwnerComponent, title: 'Owner Notify'},
         { path: 'personal-owner', component: PersonalOwnerComponent, title: 'Owner Personal'},
         { path: 'homeBuilding-owner', component: HomeBuildingOwnerComponent, title: 'Home Building Owner'},
         {path:'homeFlat-owner',component:HomeFlatOwnerComponent, title: 'Home Flat Owner'},
         {path:'homeRoom-owner',component:HomeRoomOwnerComponent, title: 'Home Room Owner'},
+        { path: 'notify-owner', component: NotifyOwnerComponent, title: 'Owner Notify',children:[
+            { path: '', redirectTo: 'not-confirmed-booking', pathMatch: 'full' },
+            { path: 'not-confirmed-booking', component: NotConfirmedBookingOwnerComponent, title: 'Not Confirmed Booking' },
+            { path: 'confirmed-booking', component: ConfirmedBookingOwnerComponent, title: 'Confirmed Booking'},
+        ]},
     ]
 },
 { path: 'home-student', component: HomeStudentComponent, canActivate: [studentGuard],

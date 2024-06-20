@@ -116,6 +116,7 @@ h1 {
     transition: transform 0.3s;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    background: #ff9999;
 
 
 }
@@ -134,7 +135,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + .option {
-    transform: scale(3.2);
+    transform: scale(1.5);
     background-color: #00bfa5;
     transition: all 0.3s ease-in-out;
     color: white;

@@ -50,6 +50,10 @@ export class AccountService {
     return this.httpclient.post<any>(`${this.baseUrl}/Account/ChangePassword`,data);
   }
 
+  predict(studentId:string,data:any):Observable<any>{
+    return this.httpclient.post<any>(`${this.baseUrl}/Prediction?studentId=${studentId}`,data);
+  }
+
 
 set userType(userType:string){
   localStorage.setItem('userType',userType);

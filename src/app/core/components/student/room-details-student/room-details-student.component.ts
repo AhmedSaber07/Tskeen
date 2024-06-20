@@ -76,7 +76,7 @@ export class RoomDetailsStudentComponent implements OnInit {
         };
         
         // console.log(this.room);
-         console.log(this.build)
+        //  console.log(this.build)
         // console.log(this.flat);
         
       }
@@ -85,7 +85,7 @@ export class RoomDetailsStudentComponent implements OnInit {
       {
     this.bookingService.GetAllBookingForStudent(this.accountService.id).subscribe(
       (data)=>{
-        console.log(data);
+        // console.log(data);
         if(data.data)
           {
         this.bookedRoomIds = data.data.map((booking: any) => booking.roomId);
@@ -109,7 +109,7 @@ export class RoomDetailsStudentComponent implements OnInit {
   {
     this.bookingService.StudentCancelRequest(id).subscribe(
       (data)=>{
-        console.log(data);
+        // console.log(data);
         Swal.fire({
           title: `${data.message}`,
           icon:'success',
@@ -138,7 +138,7 @@ export class RoomDetailsStudentComponent implements OnInit {
       confirmButtonText: 'تأكيد',
       cancelButtonText: 'الغاء',
   }).then((result) => {
-    console.log(result.value);
+    // console.log(result.value);
     
       if (result.isConfirmed) {
         if(this.accountService.id && this.build.ownerId)
@@ -153,7 +153,7 @@ export class RoomDetailsStudentComponent implements OnInit {
         this.bookingService.BookingRequest(this.requestBooking).subscribe(
           (data)=>{
             if(data){
-              console.log(data);
+              // console.log(data);
               Swal.fire({
                 // title: 'You entered:',
                 title: `${data.message}`,

@@ -6,6 +6,7 @@ import { AccountService } from '../../../services/account.service';
 import Swal from 'sweetalert2';
 import { RegisterStudent } from '../../../models/register-student';
 import { CommonModule } from '@angular/common';
+import { AuthData } from '../../../../shared/models/auth-data';
 
 @Component({
   selector: 'app-register-student',
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
 export class RegisterStudentComponent implements OnInit{
   studentRegister!:RegisterStudent;
   studentForm!: FormGroup;
+  response!:AuthData;
   emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   phonePattern = /^01[0125][0-9]{8}$/;
   passwordPattern = /^\d{6,}$/;
@@ -90,15 +92,18 @@ export class RegisterStudentComponent implements OnInit{
       
       this.accountService.StudentRegister(this.studentRegister).subscribe(
         (data)=> {
+          console.log(data);
+          this.response = data.data;
+          this.accountService.id=this.response.id;
+          this.accountService.token = this.response.token;
+          this.accountService.role = this.response.role;
           this.accountService.FirstRegisterStudent = 'true';
-          if(data){
             Swal.fire({
               title: "صحيح",
               text: `${data.message}`,
               icon: "success"
             });
             this.router.navigate(['/confirm-register-student']);
-          }
       },
       (err)=>{
         console.log(err);
