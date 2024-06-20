@@ -32,7 +32,8 @@ import { RecommendedRoomsComponent } from './core/components/student/recommended
 import { RoomDetailsStudentComponent } from './core/components/student/room-details-student/room-details-student.component';
 
 export const routes: Routes = [
-    {path:'',component:MainComponent},
+    {path:'',redirectTo:'main', pathMatch: 'full' },
+    {path:'main',component:MainComponent,title:'Main Page'},
     {path: 'login', component:LoginComponent},
     {path: 'change-password', component:ChangePasswordComponent,canActivate:[authenticateGuard]},
     {path: 'register-owner', component:RegisterOwnerComponent},
@@ -57,11 +58,11 @@ children: [
     { path: '', redirectTo: 'main-student', pathMatch: 'full' },
     { path: 'main-student', component: MainStudentComponent, title: 'Student Main' },
     { path: 'notify-student', component: NotifyStudentComponent, title: 'Student Notify'},
-    { path: 'personal-student', component: PersonalStudentComponent, title: 'Student Personal'},
     { path: 'recommendedRooms-student', component: RecommendedRoomsComponent, title: 'Student Recommended Rooms'},
-    { path: 'roomDetails-student', component: RoomDetailsStudentComponent, title: 'Student Room Details'},
 ]
 },
+{ path: 'roomDetails-student', component: RoomDetailsStudentComponent, title: 'Student Room Details',canActivate: [authenticateGuard]},
+{ path: 'personal-student', component: PersonalStudentComponent, title: 'Student Personal',canActivate: [authenticateGuard]},
 { path: 'editProfile-owner', component: EditProfileOwnerComponent, title: 'Edit Profile Owner', canActivate: [ownerGuard] },
 { path: 'addBuilding-owner', component: AddBuildingOwnerComponent, title: 'Add Building Owner', canActivate: [ownerGuard] },
 { path: 'editBuilding-owner', component: EditBuildingOwnerComponent, title: 'Edit Building Owner', canActivate: [ownerGuard] },

@@ -21,6 +21,7 @@ export class EditProfileStudentComponent implements OnInit{
   _city!:string;
   _governorate!:string;
   _lastName!:string;
+  _bithDate!:string;
   editStudentProfile!:EditprofileStudent;
   emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   phonePattern = /^01[0125][0-9]{8}$/;
@@ -31,8 +32,7 @@ export class EditProfileStudentComponent implements OnInit{
     this.accountService.getStudentProfile(this.accountService.id).subscribe(
       (data)=>{
           this.studentProfile = data.data;
-        //  console.log(this.studentProfile);
-          
+          this._bithDate = this.formatDate(this.studentProfile.birthDate);
           this._firstName = this.studentProfile.fullName.split(' ')[0];
           this._lastName = this.studentProfile.fullName.split(' ')[1];
           this._city = this.studentProfile.address.split('/')[0];
@@ -53,7 +53,7 @@ initForm(): void {
     grade: [this.studentProfile.grade, [Validators.required]],
     governorate: [this._governorate, [Validators.required]],
     city: [this._city, [Validators.required]],
-    birthDate: ['2010-10-10', [Validators.required]]
+    birthDate: [this._bithDate, [Validators.required]]
 })
 }
 
@@ -68,6 +68,15 @@ get grade() { return this.studentForm.get('grade');}
 get governorate() { return this.studentForm.get('governorate');}
 get city() { return this.studentForm.get('city');}
 get birthDate() { return this.studentForm.get('birthDate');}
+
+formatDate(dateString: string): string {
+  const dateObject = new Date(dateString);
+  const year = dateObject.getFullYear();
+  const month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+  const day = ('0' + dateObject.getDate()).slice(-2);
+  return `${year}-${month}-${day}`;
+}
+
 
 onSubmit(){
   if(this.studentForm.valid){

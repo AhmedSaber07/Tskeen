@@ -50,6 +50,19 @@ export class AccountService {
     return this.httpclient.post<any>(`${this.baseUrl}/Account/ChangePassword`,data);
   }
 
+
+set userType(userType:string){
+  localStorage.setItem('userType',userType);
+}
+
+get userType():string|null {  
+  return localStorage.getItem('userType');
+}
+
+removeUserType(){
+  localStorage.removeItem('userType');
+}
+
   get token():string|null {  
     return localStorage.getItem('token');
   }
@@ -106,11 +119,13 @@ removeFirstRegisterStudent(){
   removeId():boolean{
     localStorage.removeItem('id');
     return true;
-  }
+  } 
+
   logout(){
     this.removeToken();
     this.removeRole();
     this.removeId();
     this.removeFirstRegisterStudent();
+    this.removeUserType();
     }
 }

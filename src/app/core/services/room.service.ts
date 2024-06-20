@@ -30,6 +30,11 @@ export class RoomService {
   GetRoomDetails(roomId: number): Observable<any>{
     return this.httpclient.get<any>(`${this.baseUrl}/Home/${roomId}`);
   }
+
+  GetAllRooms(): Observable<any>{
+    return this.httpclient.get<any>(`${this.baseUrl}/Home/allRooms`);
+  }
+
   set roomId(roomId: number){
     localStorage.setItem('roomId',roomId.toString());
   }

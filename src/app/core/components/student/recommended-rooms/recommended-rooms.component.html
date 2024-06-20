@@ -1,6 +1,6 @@
 @for(room of rooms;track $index)
     {
-    <div class="item ">
+    <div class="item" (click)="navigateToRoomDetails(room.id)">
         @if(room.images)
         {
         <img [src]="'https://' + room.images[0]" alt="image">
@@ -19,11 +19,6 @@
             }
           </p>
           </div>
-          <div class="details">
-          <button type="submit" class="   btndet-g  "> احجز </button>
-          <button class="  btndet  " (click)="navigateToRoomDetails(room.id)"> التفاصيل </button>
-
-        </div>
       </div>
     }
 

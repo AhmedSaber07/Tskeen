@@ -13,6 +13,6 @@ export class HomeStudentComponent {
   constructor(private accountService: AccountService,private router:Router) { }
   logout(){
     this.accountService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/main']);
   }
 }

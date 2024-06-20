@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit{
     this.accountService.logout();
     this.route.queryParams.subscribe(params => {
       this.userType = params['type'];
-      if(this.userType ===undefined )
+      if(this.userType ===undefined && this.accountService.userType)
         {
-          this.userType = localStorage.getItem('userType') ?? '';
+          this.userType = this.accountService.userType
         }
       //console.log(this.userType); // Will log 'owner' or 'student'
     });

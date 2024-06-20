@@ -37,19 +37,19 @@ flatId!:number;
   deleteRoom(id:number){
   
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "هل أنت متأكد؟",
+      text: "لن تتمكن من التراجع عن هذا !",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "نعم، احذفه"
     }).then((result) => {
       if (result.isConfirmed) {
         this.roomService.delete(id).subscribe((data)=>{
         //  console.log(data);
         Swal.fire({
-          title: "Deleted!",
+          title: "تم الحذف",
           text: `${data.message}`,
           icon: "success"
         });

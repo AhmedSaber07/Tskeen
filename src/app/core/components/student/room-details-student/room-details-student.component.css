@@ -79,8 +79,39 @@ body{
 }
 
 
+.details{
+    width:100%;
+    text-align: center;
+    align-items: center;
+    margin-bottom: -11px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+  }
 
+  
 
+  .details .btndet{
+    width: 35%;
+    color: white;
+    background-color: #1055c2;
+   border: 2px black solid;
+ border-radius: 20px;
+ font-size: 1.5vw;
+  }
+
+  .details .btndet-g{
+   width: 35%;
+   color: white;
+   background-color: #028333;
+   border: 2px black solid;
+   border-radius: 20px;
+   font-size: 1.5vw;
+ }
+:disabled{
+    opacity: 0.5;
+}
 
 h2{
     text-align: center;
@@ -127,4 +158,14 @@ h2{
     .building .building_img{
         width: 100%;
     }
+
+    .details .btndet-g{
+        font-size: 3vw;
+        width: 30%;
+       }
+
+       .details .btndet{
+        font-size: 3vw;
+        width: 30%;
+       }
 }

@@ -71,4 +71,15 @@
            <p>يتوفر غاز : @if(build.gas){<span> نعم </span>}@else{<span> لا </span>}</p> 
     </div>
 </div>
+<div class="details">
+@if(role==='Student')
+{
+    <button type="button" class="btndet-g" (click)="Booking(room.id)" [disabled]="isRoomBooked(room.id)"> احجز </button>
+    <!-- <button class="btndet" [routerLink]="['/home-student/recommendedRooms-student']" routerLinkActive="router-link-active"  > رجوع </button> -->
+  
+}
+@else {
+    <button type="button" class="btndet" [routerLink]="['/home-owner/notify-owner']" routerLinkActive="router-link-active" >رجوع</button>
+}
+</div>
 }

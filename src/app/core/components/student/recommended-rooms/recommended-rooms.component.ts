@@ -3,6 +3,7 @@ import { RoomService } from '../../../services/room.service';
 import { GetRoom } from '../../../models/get-room';
 import { AccountService } from '../../../services/account.service';
 import { Router } from '@angular/router';
+import { BookingService } from '../../../services/booking.service';
 
 @Component({
   selector: 'app-recommended-rooms',
@@ -13,25 +14,37 @@ import { Router } from '@angular/router';
 })
 export class RecommendedRoomsComponent implements OnInit {
   rooms!:GetRoom[];
-constructor(private router:Router,private roomService:RoomService,private accountService:AccountService){}
+constructor(private bookingService:BookingService,private router:Router,private roomService:RoomService,private accountService:AccountService){}
   ngOnInit(): void {
-    if(this.accountService.id)
-      {
-    this.roomService.GetAllRoomsRecommended(this.accountService.id).subscribe(
+    // if(this.accountService.id)
+    //   {
+    // this.roomService.GetAllRoomsRecommended(this.accountService.id).subscribe(
+    //   (data)=>{
+    //     this.rooms = data.data;
+    //    console.log(this.rooms);
+    //   },
+    //   (error)=>{
+    //     console.log(error);
+    //   }
+    // )
+
+    //   }
+    this.roomService.GetAllRooms().subscribe(
       (data)=>{
         this.rooms = data.data;
-      // console.log(this.rooms);
+       console.log(this.rooms);
       },
-      (error)=>{
-        console.log(error);
+      (err)=>{
+        console.log(err);
+        
       }
     )
-      }
   }
 
   navigateToRoomDetails(roomId:number){
     this.roomService.roomId = roomId;
-    this.router.navigate(['/home-student/roomDetails-student'] );
+    this.router.navigate(['/roomDetails-student'], { queryParams: { roomId } });
   }
+
 
 }

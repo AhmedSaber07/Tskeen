@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileStudent } from '../../../../models/profile-student';
 import { AccountService } from '../../../../services/account.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-personal-student',
@@ -12,15 +12,24 @@ import { RouterLink } from '@angular/router';
 })
 export class PersonalStudentComponent implements OnInit {
   studentProfile!:ProfileStudent;
+  studentId!:string;
+  role!:string;
   // firstName!:string;
   // lastName!:string;
-  constructor(private accountService:AccountService){
+  constructor(private route: ActivatedRoute,private accountService:AccountService){
 
   }
   ngOnInit(): void {
-    if(this.accountService.id)
-      {
-    this.accountService.getStudentProfile(this.accountService.id).subscribe(
+    if(this.accountService.role)
+      this.role = this.accountService.role;
+    
+      this.route.queryParams.subscribe(params => {
+      this.studentId = params['studentId'];
+    });
+    if((this.studentId === undefined || this.studentId === null) &&this.accountService.id ) {
+      this.studentId = this.accountService.id;
+    }
+    this.accountService.getStudentProfile(this.studentId).subscribe(
       (data)=>{
           this.studentProfile = data.data;
           //console.log(this.ownerProfile);
@@ -28,6 +37,5 @@ export class PersonalStudentComponent implements OnInit {
           // this.firstName = this.ownerProfile.fullName.split(' ')[0];
           // this.lastName = this.ownerProfile.fullName.split(' ')[1];
       });
-    }
 }
 }

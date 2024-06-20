@@ -7,4 +7,5 @@ export interface ProfileStudent {
     gender:number;
     grade:number;
     age:number;
+    birthDate:string;
 }
